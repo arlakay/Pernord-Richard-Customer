@@ -1,0 +1,20 @@
+<resources>
+    <string name="app_name">Reblood</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="selamat_anda_mendapatkan_discount">Selamat, Anda Mendapatkan Discount Sebesar :</string>
+
+    <string name="firstname">First Name</string>
+    <string name="lastname">Last Name</string>
+    <string name="email">Email</string>
+    <string name="phone_number">Phone Number</string>
+    <string name="prompt_password">Password</string>
+
+    <string name="err_msg_first_name">Please type your First Name</string>
+    <string name="err_msg_last_name">Please type your Last Name</string>
+    <string name="err_msg_card_number">Card Number  Not Valid</string>
+    <string name="err_msg_phone_number">Phone Number Not Valid</string>
+    <string name="err_msg_email">Email Address Not Valid</string>
+    <string name="err_msg_password">Password must be at least 6 characters in length</string>
+</resources>
