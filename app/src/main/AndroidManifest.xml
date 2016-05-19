@@ -41,7 +41,15 @@
 
         <activity android:name=".activity.HistoryActivity"
             android:label="History">
+        </activity>
 
+
+        <activity android:name=".TextDrawable.TextDrawableActivity"
+            android:label="List TextDrawable" >
+        </activity>
+
+        <activity android:name=".TextDrawable.ListActivity"
+            android:label="List TextDrawable" >
         </activity>
 
     </application>

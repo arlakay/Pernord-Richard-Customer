@@ -15,6 +15,7 @@ import android.widget.ImageButton;
 
 import com.erd.reblood.BaseActivity;
 import com.erd.reblood.R;
+import com.erd.reblood.TextDrawable.TextDrawableActivity;
 import com.erd.reblood.utils.BarcodeScanner;
 import com.erd.reblood.utils.SessionManager;
 
@@ -61,7 +62,7 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
         event.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, ListEventActivity.class);
+                Intent intent = new Intent(MainActivity.this, TextDrawableActivity.class);
                 startActivity(intent);
             }
         });

@@ -33,7 +33,7 @@ import butterknife.ButterKnife;
  * Created by ILM on 5/12/2016.
  */
 public class ListEventActivity extends BaseActivity{
-    private String TAG = RegisterActivity.class.getSimpleName();
+    private String TAG = ListEventActivity.class.getSimpleName();
     private static final String url = Constants.BASE_URL + "/transaction/event";
     private String jsonResponse;
     private JSONArray data;
