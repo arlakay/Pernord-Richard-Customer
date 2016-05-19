@@ -44,11 +44,11 @@
         </activity>
 
 
-        <activity android:name=".TextDrawable.TextDrawableActivity"
+        <activity android:name=".textdrawable.TextDrawableActivity"
             android:label="List TextDrawable" >
         </activity>
 
-        <activity android:name=".TextDrawable.ListActivity"
+        <activity android:name=".textdrawable.ListActivity"
             android:label="List TextDrawable" >
         </activity>
 

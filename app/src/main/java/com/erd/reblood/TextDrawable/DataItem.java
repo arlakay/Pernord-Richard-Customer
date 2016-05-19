@@ -1,4 +1,4 @@
-package com.erd.reblood.TextDrawable;
+package com.erd.reblood.textdrawable;
 
 import android.graphics.drawable.Drawable;
 

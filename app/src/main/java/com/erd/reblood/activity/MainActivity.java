@@ -15,7 +15,7 @@ import android.widget.ImageButton;
 
 import com.erd.reblood.BaseActivity;
 import com.erd.reblood.R;
-import com.erd.reblood.TextDrawable.TextDrawableActivity;
+import com.erd.reblood.textdrawable.TextDrawableActivity;
 import com.erd.reblood.utils.BarcodeScanner;
 import com.erd.reblood.utils.SessionManager;
 

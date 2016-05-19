@@ -1,10 +1,9 @@
-package com.erd.reblood.TextDrawable;
+package com.erd.reblood.textdrawable;
 
 import android.content.Intent;
 import android.graphics.drawable.AnimationDrawable;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,6 +14,8 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.erd.reblood.R;
+import com.erd.reblood.textdrawable.DataItem;
+import com.erd.reblood.textdrawable.DataSource;
 
 /**
  * Created by abdur on 5/18/2016.

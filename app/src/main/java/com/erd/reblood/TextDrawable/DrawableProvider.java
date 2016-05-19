@@ -1,4 +1,4 @@
-package com.erd.reblood.TextDrawable;
+package com.erd.reblood.textdrawable;
 
 import android.content.Context;
 import android.content.res.Resources;
@@ -10,8 +10,11 @@ import android.graphics.drawable.InsetDrawable;
 import android.graphics.drawable.LayerDrawable;
 import android.util.TypedValue;
 
-import com.amulyakhare.textdrawable.TextDrawable;
-import com.amulyakhare.textdrawable.util.ColorGenerator;
+/*import com.amulyakhare.textdrawable.TextDrawable;*/
+/*import com.amulyakhare.textdrawable.util.ColorGenerator;*/
+
+import com.erd.reblood.textdrawable.TextDrawable;
+import com.erd.reblood.utils.ColorGenerator;
 
 /**
  * Created by abdur on 5/18/2016.

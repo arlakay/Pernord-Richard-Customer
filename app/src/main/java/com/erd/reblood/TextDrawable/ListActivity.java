@@ -1,9 +1,8 @@
-package com.erd.reblood.TextDrawable;
+package com.erd.reblood.textdrawable;
 
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
-import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,9 +11,13 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import com.amulyakhare.textdrawable.TextDrawable;
-import com.amulyakhare.textdrawable.util.ColorGenerator;
+/*import com.amulyakhare.textdrawable.TextDrawable;*/
+/*import com.amulyakhare.textdrawable.util.ColorGenerator;*/
 import com.erd.reblood.R;
+
+import com.erd.reblood.textdrawable.TextDrawable;
+import com.erd.reblood.utils.ColorGenerator;
+
 
 import java.util.Arrays;
 import java.util.List;
