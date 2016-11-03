@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/OCTOclub Customer.iml" filepath="$PROJECT_DIR$/OCTOclub Customer.iml" />
+      <module fileurl="file://$PROJECT_DIR$/MyDrinksCustomer.iml" filepath="$PROJECT_DIR$/MyDrinksCustomer.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>
   </component>
