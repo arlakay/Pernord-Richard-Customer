@@ -31,7 +31,7 @@ android {
     buildToolsVersion "24.0.3"
 
     defaultConfig {
-        applicationId "com.com.club"
+        applicationId "com.ilm.mydrinks"
         minSdkVersion project.ext.minimumSdkVersion
         targetSdkVersion 24
         versionCode generateVersionCode() // 140010203

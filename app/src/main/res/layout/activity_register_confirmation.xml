@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.com.rahmandev.ui.register.RegisterConfirmationActivity">
+    tools:context="com.ilm.mydrinks.ui.register.RegisterConfirmationActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
