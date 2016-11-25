@@ -13,7 +13,10 @@ import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
+import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.ilm.mydrinks.BaseActivity;
@@ -59,6 +62,10 @@ public class RegisterActivity extends BaseActivity {
     @BindView(R.id.et_mm)EditText et_birth_mm;
     @BindView(R.id.et_yy)EditText et_birth_yyyy;
 
+    @BindView(R.id.txt_regiter_tos)TextView txtTOS;
+    @BindView(R.id.checkbox_register_ToS)CheckBox checkTOS;
+    @BindView(R.id.buttonRegister)Button btnSubmit;
+
     private static final String TAG = RegisterActivity.class.getName();
     private String firstName, lastName, username, email, password, phone, birthdate, dd, mm, yy;
     private int year_now, year_allow;
@@ -89,6 +96,12 @@ public class RegisterActivity extends BaseActivity {
 
     }
 
+    @OnClick(R.id.txt_regiter_tos)
+    public void tos(View view){
+        Intent i = new Intent(this, RegisterTOSActivity.class);
+        startActivity(i);
+    }
+
     @OnClick(R.id.buttonRegister)
     public void prosesSubmit(View view) {
         firstName = et_first.getText().toString();
@@ -110,7 +123,11 @@ public class RegisterActivity extends BaseActivity {
             if (networkInfo != null && networkInfo.isConnectedOrConnecting()) {
                 year_regis = Integer.parseInt(yy);
                 if(year_regis <= year_allow) {
-                    registration(firstName, lastName, username, email, password, phone, birthdate);
+                    if(checkTOS.isChecked()) {
+                        registration(firstName, lastName, username, email, password, phone, birthdate);
+                    }else{
+                        Toast.makeText(getApplicationContext(), "Please, check terms and condition !", Toast.LENGTH_SHORT).show();
+                    }
                 }else{
                     Intent i = new Intent(this, RegisterConfirmationActivity.class);
                     i.putExtra("regisFlag", "age");

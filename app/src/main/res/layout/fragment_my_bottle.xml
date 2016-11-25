@@ -22,109 +22,19 @@
         android:textSize="16sp"
         android:layout_centerHorizontal="true"/>
 
-    <ScrollView
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_margin="@dimen/activity_vertical_margin"
         android:layout_below="@+id/lbl_choose_bottles"
-        android:layout_marginBottom="55dp">
+        android:padding="@dimen/activity_vertical_margin"
+        android:orientation="vertical">
 
-        <LinearLayout
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/fragment_my_bottle_recycler_view"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="@dimen/activity_vertical_margin"
-            android:padding="@dimen/activity_vertical_margin"
-            android:orientation="vertical">
+            android:layout_height="match_parent" />
 
-            <Button
-                android:id="@+id/btn_my_bottle_1"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="@dimen/activity_vertical_margin"
-                android:layout_gravity="start"
-                android:text="The Glenlivet 18 750cl"
-                android:textAlignment="viewStart"
-                android:textAppearance="@style/TextAppearance.AppCompat.Large"
-                android:textColor="#f1ca0a"
-                android:background="@drawable/button_rounded_inside_bottom_bar"
-                android:padding="@dimen/activity_horizontal_margin"/>
-
-            <Button
-                android:id="@+id/btn_my_bottle_2"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="@dimen/activity_vertical_margin"
-                android:layout_gravity="start"
-                android:text="Martell XO 750cl"
-                android:textAlignment="viewStart"
-                android:textAppearance="@style/TextAppearance.AppCompat.Large"
-                android:textColor="#f1ca0a"
-                android:background="@drawable/button_rounded_inside_bottom_bar"
-                android:padding="@dimen/activity_horizontal_margin"/>
-
-            <Button
-                android:id="@+id/btn_my_bottle_3"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="@dimen/activity_vertical_margin"
-                android:layout_gravity="start"
-                android:text="Martell Cordon Bleu 750cl"
-                android:textAlignment="viewStart"
-                android:textAppearance="@style/TextAppearance.AppCompat.Large"
-                android:textColor="#f1ca0a"
-                android:background="@drawable/button_rounded_inside_bottom_bar"
-                android:padding="@dimen/activity_horizontal_margin"/>
-
-            <Button
-                android:id="@+id/btn_my_bottle_4"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="@dimen/activity_vertical_margin"
-                android:layout_gravity="start"
-                android:text="Martell VSOP XO 750cl"
-                android:textAlignment="viewStart"
-                android:textAppearance="@style/TextAppearance.AppCompat.Large"
-                android:textColor="#f1ca0a"
-                android:background="@drawable/button_rounded_inside_bottom_bar"
-                android:padding="@dimen/activity_horizontal_margin"/>
-
-            <Button
-                android:id="@+id/btn_my_bottle_5"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="@dimen/activity_vertical_margin"
-                android:layout_gravity="start"
-                android:text="Chivas 12 750cl"
-                android:textAlignment="viewStart"
-                android:textAppearance="@style/TextAppearance.AppCompat.Large"
-                android:textColor="#f1ca0a"
-                android:background="@drawable/button_rounded_inside_bottom_bar"
-                android:padding="@dimen/activity_horizontal_margin"/>
-
-            <Button
-                android:id="@+id/btn_my_bottle_6"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="@dimen/activity_vertical_margin"
-                android:layout_gravity="start"
-                android:text="Absolut Vodka 750cl"
-                android:textAlignment="viewStart"
-                android:textAppearance="@style/TextAppearance.AppCompat.Large"
-                android:textColor="#f1ca0a"
-                android:background="@drawable/button_rounded_inside_bottom_bar"
-                android:padding="@dimen/activity_horizontal_margin"/>
-
-            <Button
-                android:id="@+id/btn_my_bottle_close"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:background="@drawable/button_rounded"
-                android:text="Close"
-                android:textColor="@color/white"
-                android:textAppearance="@style/TextAppearance.AppCompat.Large"/>
-
-        </LinearLayout>
-
-    </ScrollView>
+    </LinearLayout>
 
 </RelativeLayout>

@@ -12,7 +12,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name="com.ilm.mydrinks.ui.welcome.WelcomeActivity"
+            android:name=".ui.welcome.WelcomeActivity"
             android:theme="@style/welcome">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -21,31 +21,32 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.ilm.mydrinks.ui.login.LoginActivity"
+            android:name=".ui.login.LoginActivity"
             android:label="Login"
             android:theme="@style/login" />
         <activity
-            android:name="com.ilm.mydrinks.ui.register.RegisterActivity"
+            android:name=".ui.register.RegisterActivity"
             android:label="Register"
             android:theme="@style/login" />
-        <activity android:name="com.ilm.mydrinks.ui.main.MainActivity" />
-        <activity android:name="com.ilm.mydrinks.ui.register.RegisterConfirmationActivity" />
-        <activity android:name="com.ilm.mydrinks.activity.LoginConfirmationActivity" />
-        <activity android:name="com.ilm.mydrinks.activity.ClubListDetailActivity" />
-        <activity android:name="com.ilm.mydrinks.activity.ProfileDetailActivity" />
-        <activity android:name="com.ilm.mydrinks.activity.ChangePasswordActivity" />
-        <activity android:name="com.ilm.mydrinks.activity.ChangePassConfirmActivity" />
-        <activity android:name="com.ilm.mydrinks.activity.MyPointDetailActivity" />
-        <activity android:name="com.ilm.mydrinks.activity.MyBottleDetailActivity" />
-        <activity android:name="com.ilm.mydrinks.activity.MyBottleClaimConfirmActivity" />
+        <activity android:name=".ui.main.MainActivity" />
+        <activity android:name=".ui.register.RegisterConfirmationActivity" />
+        <activity android:name=".activity.LoginConfirmationActivity" />
+        <activity android:name=".activity.ClubListDetailActivity" />
+        <activity android:name=".activity.ProfileDetailActivity" />
+        <activity android:name=".activity.ChangePasswordActivity" />
+        <activity android:name=".activity.ChangePassConfirmActivity" />
+        <activity android:name=".activity.MyPointDetailActivity" />
+        <activity android:name=".activity.MyBottleDetailActivity" />
+        <activity android:name=".activity.MyBottleClaimConfirmActivity" />
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_maps_key" />
 
-        <activity android:name="com.ilm.mydrinks.ui.myqr.MyQRActivity" />
-        <activity android:name="com.ilm.mydrinks.activity.SettingsActivity" />
-        <activity android:name="com.ilm.mydrinks.activity.SettingsAboutActivity"></activity>
+        <activity android:name=".ui.myqr.MyQRActivity" />
+        <activity android:name=".activity.SettingsActivity" />
+        <activity android:name=".activity.SettingsAboutActivity" />
+        <activity android:name=".ui.register.RegisterTOSActivity"></activity>
     </application>
 
 </manifest>

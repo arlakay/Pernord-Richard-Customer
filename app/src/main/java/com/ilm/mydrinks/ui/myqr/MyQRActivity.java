@@ -9,13 +9,13 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.ilm.mydrinks.R;
-import com.ilm.mydrinks.ui.main.MainActivity;
-import com.ilm.mydrinks.utility.SessionManager;
 import com.google.zxing.BarcodeFormat;
 import com.google.zxing.MultiFormatWriter;
 import com.google.zxing.WriterException;
 import com.google.zxing.common.BitMatrix;
+import com.ilm.mydrinks.R;
+import com.ilm.mydrinks.ui.main.MainActivity;
+import com.ilm.mydrinks.utility.SessionManager;
 
 import java.util.HashMap;
 
@@ -52,7 +52,6 @@ public class MyQRActivity extends AppCompatActivity {
         lastName = user.get(SessionManager.KEY_LAST_NAME);
         QRcode = user.get(SessionManager.KEY_CUSTOMER_CODE);
         point = user.get(SessionManager.KEY_POINT_BALANCE);
-
 
         txtName.setText(firstName + " " + lastName);
         txtPoint.setText(point + " pts");

@@ -19,10 +19,9 @@ import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.ImageButton;
 
+import com.google.gson.Gson;
 import com.ilm.mydrinks.R;
 import com.ilm.mydrinks.activity.ChangePasswordActivity;
-import com.ilm.mydrinks.activity.ClubListDetailActivity;
-import com.ilm.mydrinks.activity.MyBottleDetailActivity;
 import com.ilm.mydrinks.activity.MyPointDetailActivity;
 import com.ilm.mydrinks.activity.ProfileDetailActivity;
 import com.ilm.mydrinks.activity.SettingsActivity;
@@ -31,9 +30,9 @@ import com.ilm.mydrinks.api.RestApi;
 import com.ilm.mydrinks.api.services.ApiService;
 import com.ilm.mydrinks.model.Club;
 import com.ilm.mydrinks.model.ClubResponse;
+import com.ilm.mydrinks.ui.bottomnavigation.clublist.ClubListDetailFragment;
 import com.ilm.mydrinks.ui.myqr.MyQRActivity;
 import com.ilm.mydrinks.utility.SessionManager;
-import com.google.gson.Gson;
 
 import java.util.List;
 
@@ -72,7 +71,7 @@ public class FragmentProfile extends Fragment {
             return view;
         } if (getArguments().getInt("index", 1) == 1) {
             View view = inflater.inflate(R.layout.fragment_my_bottle, container, false);
-            initMyBottle(view);
+//            initMyBottle(view);
             return view;
         } if (getArguments().getInt("index", 2) == 2) {
             View view = inflater.inflate(R.layout.fragment_my_points, container, false);
@@ -162,85 +161,85 @@ public class FragmentProfile extends Fragment {
         });
     }
 
-    private void initMyBottle(View view){
-        final Button btnBottle1 = (Button) view.findViewById(R.id.btn_my_bottle_1);
-        final Button btnBottle2 = (Button) view.findViewById(R.id.btn_my_bottle_2);
-        final Button btnBottle3 = (Button) view.findViewById(R.id.btn_my_bottle_3);
-        final Button btnBottle4 = (Button) view.findViewById(R.id.btn_my_bottle_4);
-        final Button btnBottle5 = (Button) view.findViewById(R.id.btn_my_bottle_5);
-        final Button btnBottle6 = (Button) view.findViewById(R.id.btn_my_bottle_6);
-        final Button btnBottleClose = (Button) view.findViewById(R.id.btn_my_bottle_close);
-
-        btnBottleClose.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent i = new Intent(getActivity(), MainActivity.class);
-                startActivity(i);
-                getActivity().finish();
-            }
-        });
-
-        btnBottle1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent i = new Intent(getActivity(), MyBottleDetailActivity.class);
-                i.putExtra("bottle_name","Glenlivet");
-                startActivity(i);
+//    private void initMyBottle(View view){
+//        final Button btnBottle1 = (Button) view.findViewById(R.id.btn_my_bottle_1);
+//        final Button btnBottle2 = (Button) view.findViewById(R.id.btn_my_bottle_2);
+//        final Button btnBottle3 = (Button) view.findViewById(R.id.btn_my_bottle_3);
+//        final Button btnBottle4 = (Button) view.findViewById(R.id.btn_my_bottle_4);
+//        final Button btnBottle5 = (Button) view.findViewById(R.id.btn_my_bottle_5);
+//        final Button btnBottle6 = (Button) view.findViewById(R.id.btn_my_bottle_6);
+//        final Button btnBottleClose = (Button) view.findViewById(R.id.btn_my_bottle_close);
+//
+//        btnBottleClose.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                Intent i = new Intent(getActivity(), MainActivity.class);
+//                startActivity(i);
 //                getActivity().finish();
-            }
-        });
-
-        btnBottle2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent i = new Intent(getActivity(), MyBottleDetailActivity.class);
-                i.putExtra("bottle_name","Martell XO");
-                startActivity(i);
-//                getActivity().finish();
-            }
-        });
-
-        btnBottle3.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent i = new Intent(getActivity(), MyBottleDetailActivity.class);
-                i.putExtra("bottle_name","Martell Cordon Bleu");
-                startActivity(i);
-//                getActivity().finish();
-            }
-        });
-
-        btnBottle4.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent i = new Intent(getActivity(), MyBottleDetailActivity.class);
-                i.putExtra("bottle_name","Martell VSOP XO");
-                startActivity(i);
-//                getActivity().finish();
-            }
-        });
-
-        btnBottle5.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent i = new Intent(getActivity(), MyBottleDetailActivity.class);
-                i.putExtra("bottle_name","Chivas");
-                startActivity(i);
-//                getActivity().finish();
-            }
-        });
-
-        btnBottle6.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent i = new Intent(getActivity(), MyBottleDetailActivity.class);
-                i.putExtra("bottle_name","Absolut Vodka");
-                startActivity(i);
-//                getActivity().finish();
-            }
-        });
-
-    }
+//            }
+//        });
+//
+//        btnBottle1.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                Intent i = new Intent(getActivity(), MyBottleDetailActivity.class);
+//                i.putExtra("bottle_name","Glenlivet");
+//                startActivity(i);
+////                getActivity().finish();
+//            }
+//        });
+//
+//        btnBottle2.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                Intent i = new Intent(getActivity(), MyBottleDetailActivity.class);
+//                i.putExtra("bottle_name","Martell XO");
+//                startActivity(i);
+////                getActivity().finish();
+//            }
+//        });
+//
+//        btnBottle3.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                Intent i = new Intent(getActivity(), MyBottleDetailActivity.class);
+//                i.putExtra("bottle_name","Martell Cordon Bleu");
+//                startActivity(i);
+////                getActivity().finish();
+//            }
+//        });
+//
+//        btnBottle4.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                Intent i = new Intent(getActivity(), MyBottleDetailActivity.class);
+//                i.putExtra("bottle_name","Martell VSOP XO");
+//                startActivity(i);
+////                getActivity().finish();
+//            }
+//        });
+//
+//        btnBottle5.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                Intent i = new Intent(getActivity(), MyBottleDetailActivity.class);
+//                i.putExtra("bottle_name","Chivas");
+//                startActivity(i);
+////                getActivity().finish();
+//            }
+//        });
+//
+//        btnBottle6.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                Intent i = new Intent(getActivity(), MyBottleDetailActivity.class);
+//                i.putExtra("bottle_name","Absolut Vodka");
+//                startActivity(i);
+////                getActivity().finish();
+//            }
+//        });
+//
+//    }
 
 //    private void initDemoSettings(View view) {
 //
@@ -316,13 +315,28 @@ public class FragmentProfile extends Fragment {
                         String countryStore = model.getCountry_description();
                         String phoneStore = model.getPhone();
 
-                        Intent intent = new Intent(getActivity(), ClubListDetailActivity.class);
-                        intent.putExtra("namaStore", namaStore);
-                        intent.putExtra("addrStore", addrStore);
-                        intent.putExtra("city", cityStore);
-                        intent.putExtra("country", countryStore);
-                        intent.putExtra("phone", phoneStore);
-                        startActivity(intent);
+//                        Intent intent = new Intent(getActivity(), ClubListDetailActivity.class);
+//                        intent.putExtra("namaStore", namaStore);
+//                        intent.putExtra("addrStore", addrStore);
+//                        intent.putExtra("city", cityStore);
+//                        intent.putExtra("country", countryStore);
+//                        intent.putExtra("phone", phoneStore);
+//                        startActivity(intent);
+
+                        ClubListDetailFragment restaurantDetailFragment = new ClubListDetailFragment();
+                        Bundle arguments = new Bundle();
+                        arguments.putString("namaStore", namaStore);
+                        arguments.putString("addrStore", addrStore);
+                        arguments.putString("city", cityStore);
+                        arguments.putString("country", countryStore);
+                        arguments.putString("phone", phoneStore);
+                        restaurantDetailFragment.setArguments(arguments);
+                        getActivity().getSupportFragmentManager().beginTransaction()
+                                .setCustomAnimations(R.anim.activityslidein, R.anim.activityslideinout, R.anim.activityslideoutpop, R.anim.activityslideout)
+                                .add(R.id.container, restaurantDetailFragment, "clubdetailfragment")
+                                .addToBackStack("clubdetailfragment")
+                                .commit();
+
                     }
                 });
                 adapter2.notifyDataSetChanged();

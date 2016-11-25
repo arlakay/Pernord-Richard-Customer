@@ -12,4 +12,6 @@
     <dimen name="pad_history">10dp</dimen>
     <dimen name="title">17sp</dimen>
     <dimen name="rating">15dip</dimen>
+
+    <dimen name="space_profile">32dp</dimen>
 </resources>

@@ -3,7 +3,6 @@ package com.ilm.mydrinks.ui.main;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
-import android.util.Log;
 import android.widget.TextView;
 
 import com.aurelhubert.ahbottomnavigation.AHBottomNavigation;
@@ -12,6 +11,11 @@ import com.aurelhubert.ahbottomnavigation.AHBottomNavigationItem;
 import com.aurelhubert.ahbottomnavigation.AHBottomNavigationViewPager;
 import com.ilm.mydrinks.BaseActivity;
 import com.ilm.mydrinks.R;
+import com.ilm.mydrinks.ui.bottomnavigation.clublist.ClubListFragment;
+import com.ilm.mydrinks.ui.bottomnavigation.home.HomeFragment;
+import com.ilm.mydrinks.ui.bottomnavigation.mybottles.MyBottleFragment;
+import com.ilm.mydrinks.ui.bottomnavigation.mypoints.MyPointFragment;
+import com.ilm.mydrinks.ui.bottomnavigation.notifications.NotificationFragment;
 import com.ilm.mydrinks.utility.SessionManager;
 
 import java.util.ArrayList;
@@ -27,7 +31,7 @@ public class MainActivity extends BaseActivity {
     @BindView(R.id.txt_points)TextView txtPoint;
 
     private FragmentProfile currentFragment;
-    private MainViewPagerAdapter adapter;
+    private MainPagerAdapter2 mPagerAdapter;
     private AHBottomNavigationAdapter navigationAdapter;
     private ArrayList<AHBottomNavigationItem> bottomNavigationItems = new ArrayList<>();
     private boolean useMenuResource = true;
@@ -59,6 +63,10 @@ public class MainActivity extends BaseActivity {
         txtPoint.setText(point + " pts");
 
         initUI();
+
+        viewPager = (AHBottomNavigationViewPager) findViewById(R.id.view_pager);
+        mPagerAdapter = new MainPagerAdapter2(getSupportFragmentManager());
+        viewPager.setAdapter(mPagerAdapter);
 
     }
 
@@ -101,109 +109,76 @@ public class MainActivity extends BaseActivity {
             @Override
             public boolean onTabSelected(int position, boolean wasSelected) {
 
-                if (currentFragment == null) {
-                    currentFragment = adapter.getCurrentFragment();
+                if (position == 0){
+                    HomeFragment homeFragment = new HomeFragment();
+                    Bundle arguments = new Bundle();
+    //                    arguments.putString("Id", txtId);
+                    homeFragment.setArguments(arguments);
+                    getSupportFragmentManager().beginTransaction()
+                            .setCustomAnimations(R.anim.activityslidein, R.anim.activityslideinout, R.anim.activityslideoutpop, R.anim.activityslideout)
+                            .replace(R.id.root_frame, homeFragment, "homeFragment")
+                            .commit();
                 }
+                if (position == 1) {
 
-                if (wasSelected) {
-                    currentFragment.refresh();
-                    return true;
+                    MyBottleFragment myBottleFragment = new MyBottleFragment();
+                    Bundle arguments = new Bundle();
+    //                    arguments.putString("Id", txtId);
+                    myBottleFragment.setArguments(arguments);
+                    getSupportFragmentManager().beginTransaction()
+                            .setCustomAnimations(R.anim.activityslidein, R.anim.activityslideinout, R.anim.activityslideoutpop, R.anim.activityslideout)
+                            .replace(R.id.root_frame, myBottleFragment, "myBottleFragment")
+                            .commit();
+
                 }
-
-                if (currentFragment != null) {
-                    currentFragment.willBeHidden();
+                if (position == 2){
+                    MyPointFragment myPointFragment = new MyPointFragment();
+                    Bundle arguments = new Bundle();
+    //                    arguments.putString("Id", txtId);
+                    myPointFragment.setArguments(arguments);
+                    getSupportFragmentManager().beginTransaction()
+                            .setCustomAnimations(R.anim.activityslidein, R.anim.activityslideinout, R.anim.activityslideoutpop, R.anim.activityslideout)
+                            .replace(R.id.root_frame, myPointFragment, "myPointFragment")
+                            .commit();
                 }
+                if (position == 3){
+                    ClubListFragment clubListFragment = new ClubListFragment();
+                    Bundle arguments = new Bundle();
+    //                    arguments.putString("Id", txtId);
+                    clubListFragment.setArguments(arguments);
+                    getSupportFragmentManager().beginTransaction()
+                            .setCustomAnimations(R.anim.activityslidein, R.anim.activityslideinout, R.anim.activityslideoutpop, R.anim.activityslideout)
+                            .replace(R.id.root_frame, clubListFragment, "clubListFragment")
+                            .commit();
+                }
+                if (position == 4){
+                    NotificationFragment notificationFragment = new NotificationFragment();
+                    Bundle arguments = new Bundle();
+    //                    arguments.putString("Id", txtId);
+                    notificationFragment.setArguments(arguments);
+                    getSupportFragmentManager().beginTransaction()
+                            .setCustomAnimations(R.anim.activityslidein, R.anim.activityslideinout, R.anim.activityslideoutpop, R.anim.activityslideout)
+                            .replace(R.id.root_frame, notificationFragment, "notificationFragment")
+                            .commit();
+                }
+                else {
 
-                viewPager.setCurrentItem(position, false);
-                currentFragment = adapter.getCurrentFragment();
-                currentFragment.willBeDisplayed();
-
-//                if (position == 1) {
-//                    bottomNavigation.setNotification("", 1);
-//
-//                    floatingActionButton.setVisibility(View.VISIBLE);
-//                    floatingActionButton.setAlpha(0f);
-//                    floatingActionButton.setScaleX(0f);
-//                    floatingActionButton.setScaleY(0f);
-//                    floatingActionButton.animate()
-//                            .alpha(1)
-//                            .scaleX(1)
-//                            .scaleY(1)
-//                            .setDuration(300)
-//                            .setInterpolator(new OvershootInterpolator())
-//                            .setListener(new Animator.AnimatorListener() {
-//                                @Override
-//                                public void onAnimationStart(Animator animation) {
-//
-//                                }
-//
-//                                @Override
-//                                public void onAnimationEnd(Animator animation) {
-//                                    floatingActionButton.animate()
-//                                            .setInterpolator(new LinearOutSlowInInterpolator())
-//                                            .start();
-//                                }
-//
-//                                @Override
-//                                public void onAnimationCancel(Animator animation) {
-//
-//                                }
-//
-//                                @Override
-//                                public void onAnimationRepeat(Animator animation) {
-//
-//                                }
-//                            })
-//                            .start();
-//
-//                } else {
-//                    if (floatingActionButton.getVisibility() == View.VISIBLE) {
-//                        floatingActionButton.animate()
-//                                .alpha(0)
-//                                .scaleX(0)
-//                                .scaleY(0)
-//                                .setDuration(300)
-//                                .setInterpolator(new LinearOutSlowInInterpolator())
-//                                .setListener(new Animator.AnimatorListener() {
-//                                    @Override
-//                                    public void onAnimationStart(Animator animation) {
-//
-//                                    }
-//
-//                                    @Override
-//                                    public void onAnimationEnd(Animator animation) {
-//                                        floatingActionButton.setVisibility(View.GONE);
-//                                    }
-//
-//                                    @Override
-//                                    public void onAnimationCancel(Animator animation) {
-//                                        floatingActionButton.setVisibility(View.GONE);
-//                                    }
-//
-//                                    @Override
-//                                    public void onAnimationRepeat(Animator animation) {
-//
-//                                    }
-//                                })
-//                                .start();
-//                    }
-//                }
-
-                return true;
+                }
+            return true;
             }
         });
 
-        bottomNavigation.setOnNavigationPositionListener(new AHBottomNavigation.OnNavigationPositionListener() {
-            @Override public void onPositionChange(int y) {
-                Log.d("DemoActivity", "BottomNavigation Position: " + y);
-            }
-        });
+//        bottomNavigation.setOnNavigationPositionListener(new AHBottomNavigation.OnNavigationPositionListener() {
+//            @Override public void onPositionChange(int y) {
+//                Log.d("DemoActivity", "BottomNavigation Position: " + y);
+//            }
+//        });
 
-        viewPager.setOffscreenPageLimit(4);
-        adapter = new MainViewPagerAdapter(getSupportFragmentManager());
-        viewPager.setAdapter(adapter);
+//        viewPager.setOffscreenPageLimit(4);
+//        adapter = new MainViewPagerAdapter(getSupportFragmentManager());
+//        viewPager.setAdapter(adapter);
 
-        currentFragment = adapter.getCurrentFragment();
+//        currentFragment = adapter.getCurrentFragment();
 
 //        final Handler handler = new Handler();
 //        handler.postDelayed(new Runnable() {
@@ -221,7 +196,7 @@ public class MainActivity extends BaseActivity {
 //            }
 //        }, 3000);
 
-        //bottomNavigation.setDefaultBackgroundResource(R.drawable.bottom_navigation_background);
+//        bottomNavigation.setDefaultBackgroundResource(R.drawable.bottom_navigation_background);
     }
 
     /**

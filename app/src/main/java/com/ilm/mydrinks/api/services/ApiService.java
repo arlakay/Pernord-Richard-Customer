@@ -1,6 +1,9 @@
 package com.ilm.mydrinks.api.services;
 
+import com.ilm.mydrinks.model.Claim;
 import com.ilm.mydrinks.model.ClubResponse;
+import com.ilm.mydrinks.model.MyBottleResponse;
+import com.ilm.mydrinks.model.Profile;
 import com.ilm.mydrinks.model.Registration;
 
 import retrofit2.Call;
@@ -37,6 +40,42 @@ public interface ApiService {
                                       @Field("old_password") String old_password,
                                       @Field("new_password") String new_password);
 
+    //Get All Club
     @GET("club/getAllClub")
     Call<ClubResponse> getClubList();
+
+    //My Bottle
+    @FormUrlEncoded
+    @POST("customer/myBottle")
+    Call<MyBottleResponse> myBottle(@Field("customer_code") String customer_code);
+
+    //View Profile
+    @FormUrlEncoded
+    @POST("customer/viewProfile")
+    Call<Profile> viewProfile(@Field("customer_code") String customer_code);
+
+    //Edit Profile
+//    @FormUrlEncoded
+//    @POST("customer/updateProfile")
+//    Call<Profile> editProfile(@Field("customer_code ")String a,
+//                              @Field("first_name ")String a,
+//                              @Field("last_name")String a,
+//                              @Field("birth_date")String a,
+//                              @Field("gender")String a,
+//                              @Field("phone ")String a,
+//                              @Field("street/address")String a,
+//                              @Field("city_id")String a,
+//                              @Field("country_id")String a,
+//                              @Field("picture ")String a,
+//                              );
+
+    //Claim Bottle
+    @FormUrlEncoded
+    @POST("customer/claim")
+    Call<Claim> claimBottle(@Field("serial_number") String serial_number,
+                            @Field("customer_code") String customer_code);
+
+    //Get Country
+
+    //Get City by Country
 }
