@@ -30,16 +30,34 @@
     <string name="menu_4">Club List</string>
     <string name="menu_5">Notifications</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="title_activity_maps">Map</string>
     <string name="err_msg_username">Please type your username !</string>
-    <string name="register_tos">Terms and Conditions of MyDrinks Indonesia</string>
+    <string name="register_tos">Read Terms and Conditions \nMyDrinks Indonesia</string>
     <string name="register_tos2">I agree to the terms and conditions</string>
+
+    <string name="turn_on_flashlight">Turn on Flashlight</string>
+    <string name="turn_off_flashlight">Turn off Flashlight</string>
 
     <string-array name="outlet">
         <item>Outlet 1</item>
         <item>Outlet 2</item>
     </string-array>
+
+    <string name="lipsum">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam pulvinar
+        quis leo sit amet pulvinar. Class aptent taciti sociosqu ad litora torquent per conubia nostra,
+        per inceptos himenaeos. Sed imperdiet finibus eros, eu fringilla ligula interdum id. \n\n
+
+        Duis gravida ligula et ultricies finibus. Suspendisse pretium justo ut semper ultrices.
+        Nullam lectus felis, porttitor eget tortor ac, tincidunt tincidunt nunc. Praesent vehicula
+        facilisis dolor, ut pretium orci vehicula vitae. Mauris nec sodales tellus. Etiam fringilla
+        felis augue, eu pretium elit imperdiet vel. Phasellus ut lobortis metus, at egestas mi. \n\n
+
+        Maecenas rutrum, metus ut accumsan pellentesque, lectus urna elementum augue, egestas aliquet
+        erat nisi ac nisl. Suspendisse consectetur nunc id massa maximus, non viverra orci consectetur.
+        Nulla facilisi. Morbi lacinia facilisis posuere. Vestibulum ante ipsum primis in faucibus orci
+        luctus et ultrices posuere cubilia Curae; Sed ut erat facilisis, pulvinar odio et, tempus urna.
+        \n
+    </string>
 
 </resources>

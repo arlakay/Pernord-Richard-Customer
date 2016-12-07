@@ -27,7 +27,33 @@ public class MyPointFragment extends Fragment {
     }
 
     @OnClick(R.id.btn_my_point_1)
-    public void pointRedeem(View view) {
+    public void p1(View view) {
+        MyPointDetailFragment myPointDetailFragment = new MyPointDetailFragment();
+        Bundle arguments = new Bundle();
+//		arguments.putString("phone", phoneStore);
+        myPointDetailFragment.setArguments(arguments);
+        getActivity().getSupportFragmentManager().beginTransaction()
+                .setCustomAnimations(R.anim.activityslidein, R.anim.activityslideinout, R.anim.activityslideoutpop, R.anim.activityslideout)
+                .add(R.id.root_frame, myPointDetailFragment, "myPointDetailFragment")
+                .addToBackStack("myPointDetailFragment")
+                .commit();
+    }
+
+    @OnClick(R.id.btn_my_point_2)
+    public void p2(View view) {
+        MyPointDetailFragment myPointDetailFragment = new MyPointDetailFragment();
+        Bundle arguments = new Bundle();
+//		arguments.putString("phone", phoneStore);
+        myPointDetailFragment.setArguments(arguments);
+        getActivity().getSupportFragmentManager().beginTransaction()
+                .setCustomAnimations(R.anim.activityslidein, R.anim.activityslideinout, R.anim.activityslideoutpop, R.anim.activityslideout)
+                .add(R.id.root_frame, myPointDetailFragment, "myPointDetailFragment")
+                .addToBackStack("myPointDetailFragment")
+                .commit();
+    }
+
+    @OnClick(R.id.btn_my_point_3)
+    public void p3(View view) {
         MyPointDetailFragment myPointDetailFragment = new MyPointDetailFragment();
         Bundle arguments = new Bundle();
 //		arguments.putString("phone", phoneStore);

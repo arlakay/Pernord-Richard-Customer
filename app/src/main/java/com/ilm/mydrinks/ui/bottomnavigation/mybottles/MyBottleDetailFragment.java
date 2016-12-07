@@ -19,6 +19,7 @@ import com.ilm.mydrinks.R;
 import com.ilm.mydrinks.api.RestApi;
 import com.ilm.mydrinks.api.services.ApiService;
 import com.ilm.mydrinks.model.Claim;
+import com.ilm.mydrinks.utility.CustomScannerActivity;
 import com.ilm.mydrinks.utility.SessionManager;
 
 import java.util.HashMap;
@@ -120,7 +121,8 @@ public class MyBottleDetailFragment extends Fragment {
 
     @OnClick(R.id.btn_my_bottle_detail_claim)
     public void claim(View view) {
-        IntentIntegrator.forSupportFragment(this).setPrompt("Place a barcode inside the viewfinder rectangle to scan it").initiateScan();
+        IntentIntegrator.forSupportFragment(this).setOrientationLocked(false)
+                .setCaptureActivity(CustomScannerActivity.class).initiateScan();
     }
 
     @Override

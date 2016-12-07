@@ -1,87 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!--<android.support.design.widget.CoordinatorLayout-->
-    <!--xmlns:android="http://schemas.android.com/apk/res/android"-->
-    <!--xmlns:app="http://schemas.android.com/apk/res-auto"-->
-    <!--android:layout_width="match_parent"-->
-    <!--android:layout_height="match_parent" >-->
-
-    <!--<android.support.design.widget.AppBarLayout-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">-->
-
-        <!--<RelativeLayout-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:minHeight="?attr/actionBarSize">-->
-
-            <!--<ImageView-->
-                <!--android:id="@+id/img_profile"-->
-                <!--android:layout_width="48dp"-->
-                <!--android:layout_height="48dp"-->
-                <!--android:layout_margin="10dp"-->
-                <!--android:src="@drawable/ic_face_unlock_grey600_48dp" />-->
-
-            <!--<LinearLayout-->
-                <!--android:layout_width="match_parent"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:layout_toRightOf="@+id/img_profile"-->
-                <!--android:layout_centerVertical="true"-->
-                <!--android:orientation="vertical">-->
-
-                <!--<LinearLayout-->
-                    <!--android:layout_width="match_parent"-->
-                    <!--android:layout_height="wrap_content"-->
-                    <!--android:orientation="horizontal">-->
-
-                    <!--<TextView-->
-                        <!--android:id="@+id/lbl_name"-->
-                        <!--android:layout_width="wrap_content"-->
-                        <!--android:layout_height="wrap_content"-->
-                        <!--android:text="Welcome, "-->
-                        <!--android:textSize="16sp"-->
-                        <!--android:textColor="@color/black"/>-->
-
-                    <!--<TextView-->
-                        <!--android:id="@+id/txt_name"-->
-                        <!--android:layout_width="wrap_content"-->
-                        <!--android:layout_height="wrap_content"-->
-                        <!--android:text="Testing"-->
-                        <!--android:textSize="16sp"-->
-                        <!--android:textColor="@color/black" />-->
-
-                <!--</LinearLayout>-->
-
-                <!--<LinearLayout-->
-                    <!--android:layout_width="match_parent"-->
-                    <!--android:layout_height="wrap_content"-->
-                    <!--android:orientation="horizontal">-->
-
-                    <!--<TextView-->
-                        <!--android:id="@+id/lbl_points"-->
-                        <!--android:layout_width="wrap_content"-->
-                        <!--android:layout_height="wrap_content"-->
-                        <!--android:text="Total points: "-->
-                        <!--android:textSize="16sp"-->
-                        <!--android:textColor="@color/black" />-->
-
-                    <!--<TextView-->
-                        <!--android:id="@+id/txt_points"-->
-                        <!--android:layout_width="wrap_content"-->
-                        <!--android:layout_height="wrap_content"-->
-                        <!--android:text="35 pts"-->
-                        <!--android:textSize="16sp"-->
-                        <!--android:textStyle="bold"-->
-                        <!--android:textColor="@color/black"/>-->
-
-                <!--</LinearLayout>-->
-
-            <!--</LinearLayout>-->
-
-        <!--</RelativeLayout>-->
-
-    <!--</android.support.design.widget.AppBarLayout>-->
-
     <RelativeLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -134,7 +51,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="35 pts"
+                    android:text="500 pts"
                     android:textSize="16sp"/>
 
             </LinearLayout>
@@ -188,14 +105,15 @@
         <ScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_below="@+id/layout_my_point_detail_tengah"
-            android:layout_marginBottom="55dp">
+            android:layout_below="@+id/layout_my_point_detail_tengah" >
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="@dimen/activity_vertical_margin"
-                android:padding="@dimen/activity_vertical_margin"
+                android:layout_marginLeft="@dimen/activity_vertical_margin"
+                android:layout_marginRight="@dimen/activity_vertical_margin"
+                android:paddingLeft="@dimen/activity_vertical_margin"
+                android:paddingRight="@dimen/activity_vertical_margin"
                 android:orientation="vertical"
                 android:gravity="center">
 
@@ -234,6 +152,7 @@
                     android:id="@+id/btn_my_point_detail_submit"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/activity_vertical_margin"
                     android:text="Submit"
                     android:textSize="20sp"
                     android:textStyle="bold"
@@ -246,5 +165,3 @@
         </ScrollView>
 
     </RelativeLayout>
-
-<!--</android.support.design.widget.CoordinatorLayout>-->

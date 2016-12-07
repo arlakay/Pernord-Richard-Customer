@@ -7,6 +7,7 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.support.design.widget.TextInputLayout;
+import android.support.v4.app.FragmentManager;
 import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
@@ -19,12 +20,12 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.gson.Gson;
 import com.ilm.mydrinks.BaseActivity;
 import com.ilm.mydrinks.R;
 import com.ilm.mydrinks.api.RestApi;
 import com.ilm.mydrinks.api.services.ApiService;
 import com.ilm.mydrinks.model.Registration;
-import com.google.gson.Gson;
 
 import java.util.Calendar;
 import java.util.regex.Matcher;
@@ -41,7 +42,7 @@ import retrofit2.Response;
 /**
  * Created by E.R.D on 4/2/2016.
  */
-public class RegisterActivity extends BaseActivity {
+public class RegisterActivity extends BaseActivity implements OnDialogCompleteListener {
     @BindView(R.id.input_layout_first_name)TextInputLayout inputLayoutFirstName;
     @BindView(R.id.input_layout_last_name)TextInputLayout inputLayoutLastName;
     @BindView(R.id.input_layout_username)TextInputLayout inputLayoutUsername;
@@ -67,9 +68,15 @@ public class RegisterActivity extends BaseActivity {
     @BindView(R.id.buttonRegister)Button btnSubmit;
 
     private static final String TAG = RegisterActivity.class.getName();
-    private String firstName, lastName, username, email, password, phone, birthdate, dd, mm, yy;
+    private String firstName, lastName, username, email, password, phone, birthdate, dd, mm, yy, tos, pp;
     private int year_now, year_allow;
     private int year_regis = 2017;
+
+    private static final String DEFAULT_TOS_PP = "disagree";
+
+    public static final String KEY_TOS = "key_tos";
+    public static final String KEY_PP = "key_pp";
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -94,40 +101,70 @@ public class RegisterActivity extends BaseActivity {
         et_birth_mm.addTextChangedListener(new MyTextWatcher(et_birth_mm));
         et_birth_yyyy.addTextChangedListener(new MyTextWatcher(et_birth_yyyy));
 
+        if (savedInstanceState == null) {
+            tos = DEFAULT_TOS_PP;
+            pp = DEFAULT_TOS_PP;
+        } else {
+            tos = savedInstanceState.getString(KEY_TOS);
+            pp = savedInstanceState.getString(KEY_PP);
+        }
+
+    }
+
+    @Override
+    public void onSaveInstanceState(Bundle outState) {
+        outState.putString(KEY_TOS, tos);
+        outState.putString(KEY_PP, pp);
+        super.onSaveInstanceState(outState);
     }
 
     @OnClick(R.id.txt_regiter_tos)
     public void tos(View view){
-        Intent i = new Intent(this, RegisterTOSActivity.class);
-        startActivity(i);
+        showEditDialog();
+
+    }
+
+    private void showEditDialog() {
+        FragmentManager fm = getSupportFragmentManager();
+        RegisterTOSActivity editNameDialog = new RegisterTOSActivity();
+        editNameDialog.show(fm, "fragment_edit_name");
     }
 
     @OnClick(R.id.buttonRegister)
     public void prosesSubmit(View view) {
+        if(tos.equalsIgnoreCase("agree") && pp.equalsIgnoreCase("agree")) {
+            registerSubmit();
+        }else{
+            Toast.makeText(getApplicationContext(), "You must agree with Terms of Service & Privacy Policy", Toast.LENGTH_LONG).show();
+            showEditDialog();
+        }
+    }
+
+    public void registerSubmit(){
         firstName = et_first.getText().toString();
         lastName = et_last.getText().toString();
         username = et_username.getText().toString();
         email = et_email.getText().toString();
         password = et_pass.getText().toString() ;
         phone = et_phone.getText().toString();
-        dd = et_birth_dd.getText().toString();
-        mm = et_birth_mm.getText().toString();
+        dd = "00"; //et_birth_dd.getText().toString();
+        mm = "00"; //et_birth_mm.getText().toString();
         yy = et_birth_yyyy.getText().toString();
         birthdate = yy + "-" + mm + "-" + dd;
 
         if (firstName.trim().length() > 0 && lastName.trim().length() > 0 && username.trim().length() > 0
                 && email.trim().length() > 0 && password.trim().length() > 5 && phone.trim().length() > 0
-                && dd.trim().length() > 1 && mm.trim().length() > 1 && yy.trim().length() > 3) {
+                && yy.trim().length() > 3) {
             ConnectivityManager connMgr = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
             NetworkInfo networkInfo = connMgr.getActiveNetworkInfo();
             if (networkInfo != null && networkInfo.isConnectedOrConnecting()) {
                 year_regis = Integer.parseInt(yy);
                 if(year_regis <= year_allow) {
-                    if(checkTOS.isChecked()) {
+//                    if(checkTOS.isChecked()) {
                         registration(firstName, lastName, username, email, password, phone, birthdate);
-                    }else{
-                        Toast.makeText(getApplicationContext(), "Please, check terms and condition !", Toast.LENGTH_SHORT).show();
-                    }
+//                    }else{
+//                        Toast.makeText(getApplicationContext(), "Please, check terms and condition !", Toast.LENGTH_SHORT).show();
+//                    }
                 }else{
                     Intent i = new Intent(this, RegisterConfirmationActivity.class);
                     i.putExtra("regisFlag", "age");
@@ -259,34 +296,6 @@ public class RegisterActivity extends BaseActivity {
         return true;
     }
 
-    private boolean validateDD() {
-        String newPassword  = et_birth_dd.getText().toString().trim();
-
-        if (newPassword.isEmpty() || newPassword.length()<2) {
-//            inputLayoutDD.setError(getString(R.string.err_msg_password));
-            et_birth_dd.setError(getString(R.string.err_msg_password));
-            requestFocus(et_birth_dd);
-            return false;
-        } else {
-            inputLayoutDD.setErrorEnabled(false);
-        }
-        return true;
-    }
-
-    private boolean validateMM() {
-        String newPassword  = et_birth_mm.getText().toString().trim();
-
-        if (newPassword.isEmpty() || newPassword.length()<2) {
-//            inputLayoutMM.setError(getString(R.string.err_msg_password));
-            et_birth_mm.setError(getString(R.string.err_msg_password));
-            requestFocus(et_birth_mm);
-            return false;
-        } else {
-            inputLayoutMM.setErrorEnabled(false);
-        }
-        return true;
-    }
-
     private boolean validateYYYY() {
         String newPassword  = et_birth_yyyy.getText().toString().trim();
 
@@ -316,10 +325,6 @@ public class RegisterActivity extends BaseActivity {
             return;
         }if (!validatePhone()) {
             return;
-        }if (!validateDD()) {
-            return;
-        }if (!validateMM()) {
-            return;
         }if (!validateYYYY()) {
             return;
         }
@@ -338,13 +343,8 @@ public class RegisterActivity extends BaseActivity {
                 Log.d(TAG, "Status Code = " + response.code());
                 Log.d(TAG, "Data received: " + new Gson().toJson(response.body()));
 
-                if (response.code() == 200 && response.body().isStatus() == true && response.body().getMessage().contains("succes")) {
-//                    String fName = response.body().getFirst_name();
-//                    String lName = response.body().getLast_name();
-
-//                    sessionManager.setLogin(true);
-//                    sessionManager.createLoginSession(attId, tCode, fName, lName, passw);
-
+                if (response.code() == 200 && response.body().isStatus() == true &&
+                        response.body().getMessage().contains("succes")) {
                     Intent intent = new Intent(RegisterActivity.this, RegisterConfirmationActivity.class);
                     intent.putExtra("regisFlag", "success");
                     startActivity(intent);
@@ -374,6 +374,12 @@ public class RegisterActivity extends BaseActivity {
     public void onBackPressed() {
         super.onBackPressed();
         finish();
+    }
+
+    @Override
+    public void onComplete(String tos, String pp) {
+        this.tos = tos;
+        this.pp = pp;
     }
 
     private class MyTextWatcher implements TextWatcher {
@@ -410,12 +416,12 @@ public class RegisterActivity extends BaseActivity {
                 case R.id.et_phoneNumber:
                     validatePhone();
                     break;
-                case R.id.et_dd:
-                    validateDD();
-                    break;
-                case R.id.et_mm:
-                    validateMM();
-                    break;
+//                case R.id.et_dd:
+//                    validateDD();
+//                    break;
+//                case R.id.et_mm:
+//                    validateMM();
+//                    break;
                 case R.id.et_yy:
                     validateYYYY();
                     break;

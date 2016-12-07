@@ -1,5 +1,8 @@
 package com.ilm.mydrinks.ui.main;
 
+import android.app.AlertDialog;
+import android.app.FragmentManager;
+import android.content.DialogInterface;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -30,7 +33,6 @@ public class MainActivity extends BaseActivity {
     @BindView(R.id.txt_name)TextView txtName;
     @BindView(R.id.txt_points)TextView txtPoint;
 
-    private FragmentProfile currentFragment;
     private MainPagerAdapter2 mPagerAdapter;
     private AHBottomNavigationAdapter navigationAdapter;
     private ArrayList<AHBottomNavigationItem> bottomNavigationItems = new ArrayList<>();
@@ -38,12 +40,15 @@ public class MainActivity extends BaseActivity {
     private int[] tabColors;
     private FloatingActionButton floatingActionButton;
     private SessionManager sessionManager;
+    private FragmentManager fragmentManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
+
+        fragmentManager = getFragmentManager();
 
         sessionManager = new SessionManager(getApplicationContext());
         sessionManager.checkLogin();
@@ -82,6 +87,7 @@ public class MainActivity extends BaseActivity {
             bottomNavigation.setInactiveColor(Color.parseColor("#999999"));
             bottomNavigation.setForceTint(true);
             bottomNavigation.setForceTitlesDisplay(true);
+            bottomNavigation.setBehaviorTranslationEnabled(false);
 
         } else {
             AHBottomNavigationItem item1 = new AHBottomNavigationItem(R.string.tab_1, R.drawable.ic_home_grey600_36dp, R.color.color_tab_1);
@@ -103,6 +109,8 @@ public class MainActivity extends BaseActivity {
             bottomNavigation.setInactiveColor(Color.parseColor("#999999"));
             bottomNavigation.setForceTint(true);
             bottomNavigation.setForceTitlesDisplay(true);
+            bottomNavigation.setBehaviorTranslationEnabled(false);
+
         }
 
         bottomNavigation.setOnTabSelectedListener(new AHBottomNavigation.OnTabSelectedListener() {
@@ -199,51 +207,47 @@ public class MainActivity extends BaseActivity {
 //        bottomNavigation.setDefaultBackgroundResource(R.drawable.bottom_navigation_background);
     }
 
-    /**
-     * Update the bottom navigation colored param
-     */
-    public void updateBottomNavigationColor(boolean isColored) {
-        bottomNavigation.setColored(isColored);
+    public void confirmExit(){
+        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
+        alertDialogBuilder.setTitle("Exit");
+        alertDialogBuilder.setMessage("Are you sure you want to exit?");
+        alertDialogBuilder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface arg0, int arg1) {
+                doubleBackToExitPressedOnce = false;
+                finish();
+            }
+        });
+        alertDialogBuilder.setNegativeButton("No", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                doubleBackToExitPressedOnce = false;
+            }
+        });
+        AlertDialog alertDialog = alertDialogBuilder.create();
+        alertDialog.show();
     }
 
-    /**
-     * Return if the bottom navigation is colored
-     */
-    public boolean isBottomNavigationColored() {
-        return bottomNavigation.isColored();
-    }
-
-    /**
-     * Show or hide the bottom navigation with animation
-     */
-    public void showOrHideBottomNavigation(boolean show) {
-        if (show) {
-            bottomNavigation.restoreBottomNavigation(true);
+    boolean doubleBackToExitPressedOnce = false;
+    @Override
+    public void onBackPressed() {
+        //Checking for fragment count on backstack
+        if (getSupportFragmentManager().getBackStackEntryCount() > 0) {
+            getSupportFragmentManager().popBackStack();
+        } else if (!doubleBackToExitPressedOnce) {
+            this.doubleBackToExitPressedOnce = true;
+            confirmExit();
+//            Toast.makeText(this,"Please click BACK again to exit.", Toast.LENGTH_SHORT).show();
+//            new Handler().postDelayed(new Runnable() {
+//                @Override
+//                public void run() {
+//                    doubleBackToExitPressedOnce = false;
+//                }
+//            }, 2000);
         } else {
-            bottomNavigation.hideBottomNavigation(true);
+            super.onBackPressed();
+            return;
         }
     }
-
-    /**
-     * Show or hide selected item background
-     */
-    public void updateSelectedBackgroundVisibility(boolean isVisible) {
-        bottomNavigation.setSelectedBackgroundVisible(isVisible);
-    }
-
-    /**
-     * Show or hide selected item background
-     */
-    public void setForceTitleHide(boolean forceTitleHide) {
-        bottomNavigation.setForceTitlesHide(forceTitleHide);
-    }
-
-    /**
-     * Return the number of items in the bottom navigation
-     */
-    public int getBottomNavigationNbItems() {
-        return bottomNavigation.getItemsCount();
-    }
-
 
 }

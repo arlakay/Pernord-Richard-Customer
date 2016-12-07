@@ -8,6 +8,7 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_marginBottom="56dp"
         app:layout_behavior="@string/appbar_scrolling_view_behavior"
         android:background="@drawable/background">
 
@@ -24,13 +25,14 @@
                 android:src="@drawable/logo_pernord_richard_inverse"/>
 
             <TextView
+                android:id="@+id/txt_version_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Build Version "
                 android:textSize="16sp" />
 
             <TextView
-                android:id="@+id/txt_versioning"
+                android:id="@+id/txt_version_number"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Build Number "
