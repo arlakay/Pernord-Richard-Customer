@@ -18,13 +18,11 @@
         <ImageView
             android:id="@+id/logo"
             android:layout_width="wrap_content"
-            android:layout_height="80dp"
-            android:layout_marginRight="80dp"
-            android:layout_marginLeft="80dp"
-            android:layout_marginTop="30dp"
-            android:layout_marginBottom="20dp"
-            android:background="@drawable/logo_pernord_richard_inverse"
-            android:layout_gravity="center_horizontal" />
+            android:layout_height="144dp"
+            android:src="@drawable/luxe_storage_customer"
+            android:layout_centerHorizontal="true"
+            android:layout_gravity="center_horizontal"
+            android:scaleType="centerCrop"/>
 
         <TextView
             android:id="@+id/txtRegister"
@@ -39,6 +37,7 @@
         <ScrollView
             android:id="@+id/scroll_register"
             android:layout_width="match_parent"
+            android:layout_marginTop="@dimen/activity_vertical_margin"
             android:layout_height="fill_parent"
             android:layout_below="@+id/txtRegister"
             android:layout_above="@+id/lin_button_submit">
@@ -48,84 +47,60 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
 
-                <android.support.design.widget.TextInputLayout
-                    android:id="@+id/input_layout_first_name"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-
                     <EditText
                         android:id="@+id/et_first_name"
                         android:layout_width="fill_parent"
                         android:layout_height="wrap_content"
+                        android:layout_marginBottom="8dp"
                         android:hint="@string/firstname"
                         android:padding="10dp"
                         android:singleLine="true"
-                        android:inputType="textPersonName" />
-
-                </android.support.design.widget.TextInputLayout>
-
-                <android.support.design.widget.TextInputLayout
-                    android:id="@+id/input_layout_last_name"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                        android:inputType="textPersonName"
+                        android:background="@drawable/textfield_style" />
 
                     <EditText
                         android:id="@+id/et_last_name"
                         android:layout_width="fill_parent"
                         android:layout_height="wrap_content"
+                        android:layout_marginBottom="8dp"
                         android:hint="@string/lastname"
                         android:padding="10dp"
                         android:singleLine="true"
-                        android:inputType="textPersonName" />
-
-                </android.support.design.widget.TextInputLayout>
-
-                <android.support.design.widget.TextInputLayout
-                    android:id="@+id/input_layout_username"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content" >
+                        android:inputType="textPersonName"
+                        android:background="@drawable/textfield_style"  />
 
                     <EditText
                         android:id="@+id/et_username"
                         android:layout_width="fill_parent"
                         android:layout_height="wrap_content"
+                        android:layout_marginBottom="8dp"
                         android:hint="Username"
                         android:padding="10dp"
                         android:typeface="normal"
                         android:inputType="text"
                         android:maxLines="1"
                         android:singleLine="true"
-                        android:fontFamily="sans-serif" />
-
-                </android.support.design.widget.TextInputLayout>
-
-                <android.support.design.widget.TextInputLayout
-                    android:id="@+id/input_layout_email"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content" >
+                        android:fontFamily="sans-serif"
+                        android:background="@drawable/textfield_style"  />
 
                     <EditText
                         android:id="@+id/et_email"
                         android:layout_width="fill_parent"
                         android:layout_height="wrap_content"
+                        android:layout_marginBottom="8dp"
                         android:hint="Email"
                         android:padding="10dp"
                         android:typeface="normal"
                         android:inputType="textEmailAddress"
                         android:maxLines="1"
                         android:singleLine="true"
-                        android:fontFamily="sans-serif" />
-
-                </android.support.design.widget.TextInputLayout>
-
-                <android.support.design.widget.TextInputLayout
-                    android:id="@+id/input_layout_password"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content" >
+                        android:fontFamily="sans-serif"
+                        android:background="@drawable/textfield_style"  />
 
                     <EditText android:id="@+id/et_password"
                         android:typeface="normal"
                         android:layout_height="wrap_content"
+                        android:layout_marginBottom="8dp"
                         android:hint="@string/prompt_password"
                         android:padding="10dp"
                         android:imeActionId="@+id/login"
@@ -134,19 +109,14 @@
                         android:inputType="textPassword"
                         android:maxLines="1"
                         android:singleLine="true"
-                        android:fontFamily="sans-serif" />
-
-                </android.support.design.widget.TextInputLayout>
-
-                <android.support.design.widget.TextInputLayout
-                    android:id="@+id/input_layout_phone"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content" >
+                        android:fontFamily="sans-serif"
+                        android:background="@drawable/textfield_style"  />
 
                     <EditText
                         android:id="@+id/et_phoneNumber"
                         android:layout_width="fill_parent"
                         android:layout_height="wrap_content"
+                        android:layout_marginBottom="8dp"
                         android:hint="Phone Number"
                         android:padding="10dp"
                         android:typeface="normal"
@@ -154,13 +124,13 @@
                         android:maxLines="1"
                         android:singleLine="true"
                         android:fontFamily="sans-serif"
-                        android:imeOptions="actionNext"/>
-
-                </android.support.design.widget.TextInputLayout>
+                        android:imeOptions="actionNext"
+                        android:background="@drawable/textfield_style" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
                     android:orientation="horizontal"
                     android:layout_gravity="center_vertical"
                     android:gravity="center_vertical">
@@ -171,74 +141,19 @@
                         android:text="Date of Birth:"
                         android:textSize="18sp"/>
 
-                    <android.support.design.widget.TextInputLayout
-                        android:id="@+id/input_layout_dd"
-                        android:layout_width="wrap_content"
+                    <EditText
+                        android:id="@+id/et_yy"
+                        android:layout_width="80dp"
                         android:layout_height="wrap_content"
-                        android:visibility="gone">
-
-                        <EditText
-                            android:id="@+id/et_dd"
-                            android:layout_width="45dp"
-                            android:layout_height="wrap_content"
-                            android:hint="DD"
-                            android:layout_marginBottom="10dp"
-                            android:layout_marginRight="@dimen/activity_horizontal_margin"
-                            android:padding="10dp"
-                            android:typeface="normal"
-                            android:inputType="number"
-                            android:maxLines="1"
-                            android:maxLength="2"
-                            android:singleLine="true"
-                            android:fontFamily="sans-serif"
-                            android:imeOptions="actionNext"/>
-
-                    </android.support.design.widget.TextInputLayout>
-
-                    <android.support.design.widget.TextInputLayout
-                        android:id="@+id/input_layout_mm"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:visibility="gone" >
-
-                        <EditText
-                            android:id="@+id/et_mm"
-                            android:layout_width="55dp"
-                            android:layout_height="wrap_content"
-                            android:hint="MM"
-                            android:layout_marginBottom="10dp"
-                            android:layout_marginRight="@dimen/activity_horizontal_margin"
-                            android:padding="10dp"
-                            android:typeface="normal"
-                            android:inputType="number"
-                            android:maxLines="1"
-                            android:maxLength="2"
-                            android:singleLine="true"
-                            android:fontFamily="sans-serif"
-                            android:imeOptions="actionNext"/>
-
-                    </android.support.design.widget.TextInputLayout>
-
-                    <android.support.design.widget.TextInputLayout
-                        android:id="@+id/input_layout_yy"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" >
-
-                        <EditText
-                            android:id="@+id/et_yy"
-                            android:layout_width="80dp"
-                            android:layout_height="wrap_content"
-                            android:hint="YYYY"
-                            android:layout_marginBottom="10dp"
-                            android:padding="10dp"
-                            android:typeface="normal"
-                            android:inputType="number"
-                            android:maxLines="1"
-                            android:maxLength="4"
-                            android:singleLine="true"
-                            android:fontFamily="sans-serif" />
-
-                    </android.support.design.widget.TextInputLayout>
+                        android:padding="10dp"
+                        android:hint="YYYY"
+                        android:typeface="normal"
+                        android:inputType="number"
+                        android:maxLines="1"
+                        android:maxLength="4"
+                        android:singleLine="true"
+                        android:fontFamily="sans-serif"
+                        android:background="@drawable/textfield_style"  />
 
                 </LinearLayout>
 
@@ -246,24 +161,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
                     android:background="#CCCCCC"/>
-
-                <TextView
-                    android:id="@+id/txt_regiter_tos"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@string/register_tos"
-                    android:textColor="#ffcd33"
-                    android:layout_marginTop="@dimen/activity_vertical_margin"
-                    android:layout_marginBottom="@dimen/activity_vertical_margin"
-                    android:visibility="gone"/>
-
-                <CheckBox
-                    android:id="@+id/checkbox_register_ToS"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="@dimen/activity_vertical_margin"
-                    android:text="@string/register_tos2"
-                    android:visibility="gone"/>
 
             </LinearLayout>
 

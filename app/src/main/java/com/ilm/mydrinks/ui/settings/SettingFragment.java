@@ -42,7 +42,7 @@ public class SettingFragment extends Fragment {
         settingAboutFragment.setArguments(arguments);
         getActivity().getSupportFragmentManager().beginTransaction()
                 .setCustomAnimations(R.anim.activityslidein, R.anim.activityslideinout, R.anim.activityslideoutpop, R.anim.activityslideout)
-                .add(R.id.root_frame, settingAboutFragment, "settingAboutFragment")
+                .replace(R.id.root_frame, settingAboutFragment, "settingAboutFragment")
                 .addToBackStack("settingAboutFragment")
                 .commit();
     }

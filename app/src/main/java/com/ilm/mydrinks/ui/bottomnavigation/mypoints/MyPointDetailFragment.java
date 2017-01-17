@@ -54,7 +54,7 @@ public class MyPointDetailFragment extends Fragment {
             myPointConfirmFragment.setArguments(arguments);
             getActivity().getSupportFragmentManager().beginTransaction()
                     .setCustomAnimations(R.anim.activityslidein, R.anim.activityslideinout, R.anim.activityslideoutpop, R.anim.activityslideout)
-                    .add(R.id.root_frame, myPointConfirmFragment, "myPointConfirmFragment")
+                    .replace(R.id.root_frame, myPointConfirmFragment, "myPointConfirmFragment")
                     .addToBackStack("myPointConfirmFragment")
                     .commit();
         }else{

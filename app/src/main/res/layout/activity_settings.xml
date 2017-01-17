@@ -1,110 +1,82 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!--<android.support.design.widget.CoordinatorLayout-->
-    <!--xmlns:android="http://schemas.android.com/apk/res/android"-->
-    <!--xmlns:app="http://schemas.android.com/apk/res-auto"-->
-    <!--android:layout_width="match_parent"-->
-    <!--android:layout_height="match_parent" >-->
-
-    <!--<android.support.design.widget.AppBarLayout-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">-->
-
-        <!--<RelativeLayout-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:minHeight="?attr/actionBarSize">-->
-
-            <!--<ImageView-->
-                <!--android:id="@+id/img_profile"-->
-                <!--android:layout_width="48dp"-->
-                <!--android:layout_height="48dp"-->
-                <!--android:layout_margin="10dp"-->
-                <!--android:src="@drawable/ic_face_unlock_grey600_48dp" />-->
-
-            <!--<LinearLayout-->
-                <!--android:layout_width="match_parent"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:layout_toRightOf="@+id/img_profile"-->
-                <!--android:layout_centerVertical="true"-->
-                <!--android:orientation="vertical">-->
-
-                <!--<LinearLayout-->
-                    <!--android:layout_width="match_parent"-->
-                    <!--android:layout_height="wrap_content"-->
-                    <!--android:orientation="horizontal">-->
-
-                    <!--<TextView-->
-                        <!--android:id="@+id/lbl_name"-->
-                        <!--android:layout_width="wrap_content"-->
-                        <!--android:layout_height="wrap_content"-->
-                        <!--android:text="Welcome, "-->
-                        <!--android:textSize="16sp"-->
-                        <!--android:textColor="@color/black"/>-->
-
-                    <!--<TextView-->
-                        <!--android:id="@+id/txt_name"-->
-                        <!--android:layout_width="wrap_content"-->
-                        <!--android:layout_height="wrap_content"-->
-                        <!--android:text="Testing"-->
-                        <!--android:textSize="16sp"-->
-                        <!--android:textColor="@color/black" />-->
-
-                <!--</LinearLayout>-->
-
-                <!--<LinearLayout-->
-                    <!--android:layout_width="match_parent"-->
-                    <!--android:layout_height="wrap_content"-->
-                    <!--android:orientation="horizontal">-->
-
-                    <!--<TextView-->
-                        <!--android:id="@+id/lbl_points"-->
-                        <!--android:layout_width="wrap_content"-->
-                        <!--android:layout_height="wrap_content"-->
-                        <!--android:text="Total points: "-->
-                        <!--android:textSize="16sp"-->
-                        <!--android:textColor="@color/black" />-->
-
-                    <!--<TextView-->
-                        <!--android:id="@+id/txt_points"-->
-                        <!--android:layout_width="wrap_content"-->
-                        <!--android:layout_height="wrap_content"-->
-                        <!--android:text="35 pts"-->
-                        <!--android:textSize="16sp"-->
-                        <!--android:textStyle="bold"-->
-                        <!--android:textColor="@color/black"/>-->
-
-                <!--</LinearLayout>-->
-
-            <!--</LinearLayout>-->
-
-        <!--</RelativeLayout>-->
-
-    <!--</android.support.design.widget.AppBarLayout>-->
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginBottom="56dp"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    android:background="@drawable/background">
 
     <RelativeLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/layout_notif"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginBottom="56dp"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior"
-        android:background="@drawable/background">
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/activity_horizontal_margin"
+        android:orientation="horizontal"
+        android:background="@drawable/button_rounded">
+
+        <android.support.v7.widget.SwitchCompat
+            android:id="@+id/sw_notif"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"/>
 
         <Button
-            android:id="@+id/btn_setting_about"
-            android:layout_width="match_parent"
+            android:id="@+id/btn_setting_notification"
+            android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="@dimen/activity_horizontal_margin"
-            android:layout_gravity="start"
-            android:text="About My Drinks"
+            android:layout_toLeftOf="@+id/sw_notif"
+            android:gravity="left|center_vertical"
+            android:text="Notification"
             android:textSize="16sp"
             android:textAllCaps="false"
-            android:textAlignment="textStart"
             android:textColor="@color/white"
             android:paddingLeft="@dimen/activity_horizontal_margin"
-            android:background="@drawable/button_rounded"/>
+            android:background="@null"/>
 
     </RelativeLayout>
 
-<!--</android.support.design.widget.CoordinatorLayout>-->
+    <Button
+        android:id="@+id/btn_setting_about"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/activity_horizontal_margin"
+        android:layout_below="@+id/layout_notif"
+        android:gravity="left|center_vertical"
+        android:text="About Luxe-Storage"
+        android:textSize="16sp"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:background="@drawable/button_rounded"/>
+
+    <Button
+        android:id="@+id/btn_setting_tos"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/activity_horizontal_margin"
+        android:layout_below="@+id/btn_setting_about"
+        android:gravity="left|center_vertical"
+        android:text="Terms of Use"
+        android:textSize="16sp"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:background="@drawable/button_rounded"/>
+
+    <Button
+        android:id="@+id/btn_setting_pp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/activity_horizontal_margin"
+        android:layout_below="@+id/btn_setting_tos"
+        android:gravity="left|center_vertical"
+        android:text="Privacy Policy"
+        android:textSize="16sp"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:background="@drawable/button_rounded"/>
+</RelativeLayout>

@@ -5,13 +5,14 @@ package com.ilm.mydrinks.model;
  */
 
 public class MyBottle {
-    private String product_description;
-    private String purchase_date;
-    private String keep_date;
-    private String take_date;
-    private String original_volume;
-    private String last_volume;
-    private String picture;
+    public String product_description;
+    public String purchase_date;
+    public String keep_start_date;
+    public String keep_end_date;
+    public String take_date;
+    public String original_volume;
+    public String last_volume;
+    public String picture;
 
     public String getProduct_description() {
         return product_description;
@@ -29,12 +30,20 @@ public class MyBottle {
         this.purchase_date = purchase_date;
     }
 
-    public String getKeep_date() {
-        return keep_date;
+    public String getKeep_start_date() {
+        return keep_start_date;
     }
 
-    public void setKeep_date(String keep_date) {
-        this.keep_date = keep_date;
+    public void setKeep_start_date(String keep_start_date) {
+        this.keep_start_date = keep_start_date;
+    }
+
+    public String getKeep_end_date() {
+        return keep_end_date;
+    }
+
+    public void setKeep_end_date(String keep_end_date) {
+        this.keep_end_date = keep_end_date;
     }
 
     public String getTake_date() {

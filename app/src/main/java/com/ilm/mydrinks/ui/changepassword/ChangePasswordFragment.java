@@ -118,7 +118,7 @@ public class ChangePasswordFragment extends Fragment {
                     changePasswordConfirmationFragment.setArguments(arguments);
                     getActivity().getSupportFragmentManager().beginTransaction()
                             .setCustomAnimations(R.anim.activityslidein, R.anim.activityslideinout, R.anim.activityslideoutpop, R.anim.activityslideout)
-                            .add(R.id.root_frame, changePasswordConfirmationFragment, "changePasswordConfirmationFragment")
+                            .replace(R.id.root_frame, changePasswordConfirmationFragment, "changePasswordConfirmationFragment")
                             .addToBackStack("changePasswordConfirmationFragment")
                             .commit();
                 } else {
@@ -128,7 +128,7 @@ public class ChangePasswordFragment extends Fragment {
                     changePasswordConfirmationFragment.setArguments(arguments);
                     getActivity().getSupportFragmentManager().beginTransaction()
                             .setCustomAnimations(R.anim.activityslidein, R.anim.activityslideinout, R.anim.activityslideoutpop, R.anim.activityslideout)
-                            .add(R.id.root_frame, changePasswordConfirmationFragment, "changePasswordConfirmationFragment")
+                            .replace(R.id.root_frame, changePasswordConfirmationFragment, "changePasswordConfirmationFragment")
                             .addToBackStack("changePasswordConfirmationFragment")
                             .commit();
                 }
@@ -144,7 +144,7 @@ public class ChangePasswordFragment extends Fragment {
                 changePasswordConfirmationFragment.setArguments(arguments);
                 getActivity().getSupportFragmentManager().beginTransaction()
                         .setCustomAnimations(R.anim.activityslidein, R.anim.activityslideinout, R.anim.activityslideoutpop, R.anim.activityslideout)
-                        .add(R.id.root_frame, changePasswordConfirmationFragment, "changePasswordConfirmationFragment")
+                        .replace(R.id.root_frame, changePasswordConfirmationFragment, "changePasswordConfirmationFragment")
                         .addToBackStack("changePasswordConfirmationFragment")
                         .commit();
 

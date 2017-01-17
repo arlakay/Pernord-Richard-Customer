@@ -80,5 +80,5 @@ dependencies {
     //Bottom Navigation
     compile 'com.aurelhubert:ahbottomnavigation:1.5.1'
 
-    compile 'com.android.support.constraint:constraint-layout:1.0.0-alpha2'
+    compile 'com.android.support.constraint:constraint-layout:1.0.0-beta4'
 }

@@ -3,6 +3,7 @@ package com.ilm.mydrinks.ui.register;
 import android.app.Activity;
 import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
@@ -12,7 +13,6 @@ import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.ScrollView;
-import android.widget.Toast;
 
 import com.ilm.mydrinks.R;
 
@@ -28,7 +28,9 @@ public class RegisterTOSActivity extends DialogFragment implements CompoundButto
     @BindView(R.id.check_pp)CheckBox checkPP;
 
     private EditText mEditText;
-    private String mTos, mPP;
+    public String mTos = "disagree";
+    public String mPP = "disagree";
+    public OnDialogCompleteListener mListener;
 
     public RegisterTOSActivity() {
         // Empty constructor required for DialogFragment
@@ -41,7 +43,7 @@ public class RegisterTOSActivity extends DialogFragment implements CompoundButto
         ButterKnife.bind(this, view);
 
         mEditText = (EditText) view.findViewById(R.id.txt_your_name);
-        getDialog().setTitle("Hello");
+        getDialog().setTitle("My Drinks Indonesia");
 
         parentScroll.setOnTouchListener(new View.OnTouchListener() {
 
@@ -72,27 +74,11 @@ public class RegisterTOSActivity extends DialogFragment implements CompoundButto
             }
         });
 
-        checkToS.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
-                if (compoundButton.isChecked()) {
-                    //checked
-                    Toast.makeText(getActivity(), "Checked", Toast.LENGTH_LONG).show();
-                    mTos = "agree";
-                } else {
-                    //not checked
-                    Toast.makeText(getActivity(), "Not Checked", Toast.LENGTH_LONG).show();
-                    mTos = "disagree";
-                }
-            }
-        });
-
+        checkToS.setOnCheckedChangeListener(this);
         checkPP.setOnCheckedChangeListener(this);
 
         return view;
     }
-
-    private OnDialogCompleteListener mListener;
 
     @Override
     public void onAttach(Activity activity) {
@@ -109,25 +95,25 @@ public class RegisterTOSActivity extends DialogFragment implements CompoundButto
     public void onCheckedChanged(CompoundButton compoundButton, boolean isChecked) {
         if (isChecked) {
             if(compoundButton==checkToS) {
-//                Toast.makeText(getActivity(), "Checked", Toast.LENGTH_LONG).show();
+//                Toast.makeText(getActivity(), "Checked TOS", Toast.LENGTH_LONG).show();
                 mTos = "agree";
             }
             if(compoundButton==checkPP) {
-//                Toast.makeText(getActivity(), "Checked", Toast.LENGTH_LONG).show();
+//                Toast.makeText(getActivity(), "Checked PP", Toast.LENGTH_LONG).show();
                 mPP = "agree";
             }
-            this.mListener.onComplete(mTos, mPP);
         } else {
             if(compoundButton==checkToS) {
-//                Toast.makeText(getActivity(), "Checked", Toast.LENGTH_LONG).show();
-                mTos = "agree";
+//                Toast.makeText(getActivity(), "Unchecked TOS", Toast.LENGTH_LONG).show();
+                mTos = "disagree";
             }
             if(compoundButton==checkPP) {
-//                Toast.makeText(getActivity(), "Checked", Toast.LENGTH_LONG).show();
-                mTos = "agree";
+//                Toast.makeText(getActivity(), "Unchecked PP", Toast.LENGTH_LONG).show();
+                mPP = "disagree";
             }
-            this.mListener.onComplete(mTos, mPP);
         }
+        this.mListener.onComplete(mTos, mPP);
+        Log.e("Dialog TOS: ", mTos+ ";" +mPP);
     }
 
 }

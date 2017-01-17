@@ -8,8 +8,8 @@ import retrofit2.converter.gson.GsonConverterFactory;
  */
 public class RestApi {
 
-    public static final String BASE_URL = "http://octolink.co.id/api/mydrinks/api/";        //Production
-//    public static final String BASE_URL = "http://192.168.1.104/api/mydrinks/index.php/api/";        //Local Debugging
+//    public static final String BASE_URL = "http://octolink.co.id/api/mydrinks/api/";        //Production
+    public static final String BASE_URL = "http://192.168.0.101/api/mydrinks/index.php/api/";        //Local Debugging
 
     private static Retrofit retrofit = null;
 

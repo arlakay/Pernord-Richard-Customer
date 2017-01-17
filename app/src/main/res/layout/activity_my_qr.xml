@@ -13,6 +13,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/activity_horizontal_margin"
+        android:gravity="center_horizontal"
         android:text="MY QR"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
         android:textAlignment="center"

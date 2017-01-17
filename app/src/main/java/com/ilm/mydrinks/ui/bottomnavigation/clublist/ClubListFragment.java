@@ -91,7 +91,7 @@ public class ClubListFragment extends Fragment {
                         restaurantDetailFragment.setArguments(arguments);
                         getActivity().getSupportFragmentManager().beginTransaction()
                                 .setCustomAnimations(R.anim.activityslidein, R.anim.activityslideinout, R.anim.activityslideoutpop, R.anim.activityslideout)
-                                .add(R.id.root_frame, restaurantDetailFragment, "clubdetailfragment")
+                                .replace(R.id.root_frame, restaurantDetailFragment, "clubdetailfragment")
                                 .addToBackStack("clubdetailfragment")
                                 .commit();
 

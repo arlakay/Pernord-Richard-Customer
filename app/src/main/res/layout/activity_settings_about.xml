@@ -21,8 +21,9 @@
 
             <ImageView
                 android:layout_width="192dp"
-                android:layout_height="144dp"
-                android:src="@drawable/logo_pernord_richard_inverse"/>
+                android:layout_height="192dp"
+                android:src="@drawable/luxe_storage_customer"
+                android:scaleType="centerCrop"/>
 
             <TextView
                 android:id="@+id/txt_version_name"

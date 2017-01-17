@@ -110,15 +110,9 @@ public class LoginActivity extends BaseActivity {
                     startActivity(intent);
                     finish();
                 } else {
-                    AlertDialog alertDialog = new AlertDialog.Builder(LoginActivity.this).create();
-                    alertDialog.setTitle("Login Fail");
-                    alertDialog.setMessage("Username/Email and Password didn't match");
-                    alertDialog.setButton("OK", new DialogInterface.OnClickListener() {
-                        public void onClick(DialogInterface dialog, int which) {
-
-                        }
-                    });
-                    alertDialog.show();
+                    Intent intent = new Intent(LoginActivity.this, LoginConfirmationActivity.class);
+                    startActivity(intent);
+                    finish();
                 }
             }
 
@@ -128,7 +122,8 @@ public class LoginActivity extends BaseActivity {
 
                 AlertDialog alertDialog = new AlertDialog.Builder(LoginActivity.this).create();
                 alertDialog.setTitle("Error");
-                alertDialog.setMessage("Network Error"+t.getMessage());
+                alertDialog.setMessage("The connection has timed out\n" +
+                        "The server is taking too long to respond.");
                 alertDialog.setButton("OK", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
 

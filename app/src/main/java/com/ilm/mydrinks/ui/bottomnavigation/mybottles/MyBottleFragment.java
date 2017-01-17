@@ -85,7 +85,8 @@ public class MyBottleFragment extends Fragment {
                     public void onItemClick(MyBottle model) {
                         String productName =  model.getProduct_description();
                         String purchaseDate =  model.getPurchase_date();
-                        String keepDate = model.getKeep_date();
+                        String storing_date = model.getKeep_start_date();
+                        String valid = model.getKeep_end_date();
                         String takeDate = model.getTake_date();
                         String originalVolume = model.getOriginal_volume();
                         String lastVolume = model.getLast_volume();
@@ -94,10 +95,15 @@ public class MyBottleFragment extends Fragment {
                         MyBottleDetailFragment myBottleDetailFragment = new MyBottleDetailFragment();
                         Bundle arguments = new Bundle();
                         arguments.putString("productName", productName);
+                        arguments.putString("volume", lastVolume);
+                        arguments.putString("storing_date", storing_date );
+                        arguments.putString("valid_until", valid);
+                        arguments.putString("last_claim", takeDate);
+
                         myBottleDetailFragment.setArguments(arguments);
                         getActivity().getSupportFragmentManager().beginTransaction()
                                 .setCustomAnimations(R.anim.activityslidein, R.anim.activityslideinout, R.anim.activityslideoutpop, R.anim.activityslideout)
-                                .add(R.id.root_frame, myBottleDetailFragment, "myBottleDetailFragment")
+                                .replace(R.id.root_frame, myBottleDetailFragment, "myBottleDetailFragment")
                                 .addToBackStack("myBottleDetailFragment")
                                 .commit();
 

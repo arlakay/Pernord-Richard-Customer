@@ -6,7 +6,6 @@ import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
-import android.support.design.widget.TextInputLayout;
 import android.support.v4.app.FragmentManager;
 import android.text.Editable;
 import android.text.TextUtils;
@@ -15,9 +14,7 @@ import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
-import android.widget.CheckBox;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.gson.Gson;
@@ -43,15 +40,15 @@ import retrofit2.Response;
  * Created by E.R.D on 4/2/2016.
  */
 public class RegisterActivity extends BaseActivity implements OnDialogCompleteListener {
-    @BindView(R.id.input_layout_first_name)TextInputLayout inputLayoutFirstName;
-    @BindView(R.id.input_layout_last_name)TextInputLayout inputLayoutLastName;
-    @BindView(R.id.input_layout_username)TextInputLayout inputLayoutUsername;
-    @BindView(R.id.input_layout_email)TextInputLayout inputLayoutEmail;
-    @BindView(R.id.input_layout_password)TextInputLayout inputLayoutPassword;
-    @BindView(R.id.input_layout_phone)TextInputLayout inputLayoutPhone;
-    @BindView(R.id.input_layout_dd)TextInputLayout inputLayoutDD;
-    @BindView(R.id.input_layout_mm)TextInputLayout inputLayoutMM;
-    @BindView(R.id.input_layout_yy)TextInputLayout inputLayoutYY;
+//    @BindView(R.id.input_layout_first_name)TextInputLayout inputLayoutFirstName;
+//    @BindView(R.id.input_layout_last_name)TextInputLayout inputLayoutLastName;
+//    @BindView(R.id.input_layout_username)TextInputLayout inputLayoutUsername;
+//    @BindView(R.id.input_layout_email)TextInputLayout inputLayoutEmail;
+//    @BindView(R.id.input_layout_password)TextInputLayout inputLayoutPassword;
+//    @BindView(R.id.input_layout_phone)TextInputLayout inputLayoutPhone;
+//    @BindView(R.id.input_layout_dd)TextInputLayout inputLayoutDD;
+//    @BindView(R.id.input_layout_mm)TextInputLayout inputLayoutMM;
+//    @BindView(R.id.input_layout_yy)TextInputLayout inputLayoutYY;
 
     @BindView(R.id.et_first_name)EditText et_first;
     @BindView(R.id.et_last_name)EditText et_last;
@@ -59,12 +56,12 @@ public class RegisterActivity extends BaseActivity implements OnDialogCompleteLi
     @BindView(R.id.et_email)EditText et_email;
     @BindView(R.id.et_password)EditText et_pass;
     @BindView(R.id.et_phoneNumber)EditText et_phone;
-    @BindView(R.id.et_dd)EditText et_birth_dd;
-    @BindView(R.id.et_mm)EditText et_birth_mm;
+//    @BindView(R.id.et_dd)EditText et_birth_dd;
+//    @BindView(R.id.et_mm)EditText et_birth_mm;
     @BindView(R.id.et_yy)EditText et_birth_yyyy;
 
-    @BindView(R.id.txt_regiter_tos)TextView txtTOS;
-    @BindView(R.id.checkbox_register_ToS)CheckBox checkTOS;
+//    @BindView(R.id.txt_regiter_tos)TextView txtTOS;
+//    @BindView(R.id.checkbox_register_ToS)CheckBox checkTOS;
     @BindView(R.id.buttonRegister)Button btnSubmit;
 
     private static final String TAG = RegisterActivity.class.getName();
@@ -97,8 +94,8 @@ public class RegisterActivity extends BaseActivity implements OnDialogCompleteLi
         et_email.addTextChangedListener(new MyTextWatcher(et_email));
         et_pass.addTextChangedListener(new MyTextWatcher(et_pass));
         et_phone.addTextChangedListener(new MyTextWatcher(et_phone));
-        et_birth_dd.addTextChangedListener(new MyTextWatcher(et_birth_dd));
-        et_birth_mm.addTextChangedListener(new MyTextWatcher(et_birth_mm));
+//        et_birth_dd.addTextChangedListener(new MyTextWatcher(et_birth_dd));
+//        et_birth_mm.addTextChangedListener(new MyTextWatcher(et_birth_mm));
         et_birth_yyyy.addTextChangedListener(new MyTextWatcher(et_birth_yyyy));
 
         if (savedInstanceState == null) {
@@ -118,12 +115,6 @@ public class RegisterActivity extends BaseActivity implements OnDialogCompleteLi
         super.onSaveInstanceState(outState);
     }
 
-    @OnClick(R.id.txt_regiter_tos)
-    public void tos(View view){
-        showEditDialog();
-
-    }
-
     private void showEditDialog() {
         FragmentManager fm = getSupportFragmentManager();
         RegisterTOSActivity editNameDialog = new RegisterTOSActivity();
@@ -132,12 +123,7 @@ public class RegisterActivity extends BaseActivity implements OnDialogCompleteLi
 
     @OnClick(R.id.buttonRegister)
     public void prosesSubmit(View view) {
-        if(tos.equalsIgnoreCase("agree") && pp.equalsIgnoreCase("agree")) {
-            registerSubmit();
-        }else{
-            Toast.makeText(getApplicationContext(), "You must agree with Terms of Service & Privacy Policy", Toast.LENGTH_LONG).show();
-            showEditDialog();
-        }
+        registerSubmit();
     }
 
     public void registerSubmit(){
@@ -152,35 +138,36 @@ public class RegisterActivity extends BaseActivity implements OnDialogCompleteLi
         yy = et_birth_yyyy.getText().toString();
         birthdate = yy + "-" + mm + "-" + dd;
 
-        if (firstName.trim().length() > 0 && lastName.trim().length() > 0 && username.trim().length() > 0
-                && email.trim().length() > 0 && password.trim().length() > 5 && phone.trim().length() > 0
-                && yy.trim().length() > 3) {
-            ConnectivityManager connMgr = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
-            NetworkInfo networkInfo = connMgr.getActiveNetworkInfo();
-            if (networkInfo != null && networkInfo.isConnectedOrConnecting()) {
+        ConnectivityManager connMgr = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo networkInfo = connMgr.getActiveNetworkInfo();
+        if (networkInfo != null && networkInfo.isConnectedOrConnecting()) {
+            if (firstName.trim().length() > 0 && lastName.trim().length() > 0 && username.trim().length() > 0
+                    && email.trim().length() > 0 && password.trim().length() > 5 && phone.trim().length() > 0
+                    && yy.trim().length() > 3) {
                 year_regis = Integer.parseInt(yy);
                 if(year_regis <= year_allow) {
-//                    if(checkTOS.isChecked()) {
+                    if(tos.equalsIgnoreCase("agree") && pp.equalsIgnoreCase("agree")) {
                         registration(firstName, lastName, username, email, password, phone, birthdate);
-//                    }else{
-//                        Toast.makeText(getApplicationContext(), "Please, check terms and condition !", Toast.LENGTH_SHORT).show();
-//                    }
+                    }else{
+                        showEditDialog();
+                    }
                 }else{
                     Intent i = new Intent(this, RegisterConfirmationActivity.class);
                     i.putExtra("regisFlag", "age");
                     startActivity(i);
                     finish();
                 }
-            }else {
+            } else {
                 Toast.makeText(getApplicationContext(),
-                        "No Internet Access Available!", Toast.LENGTH_LONG)
+                        "Please fill field above", Toast.LENGTH_LONG)
                         .show();
             }
-        } else {
+        }else {
             Toast.makeText(getApplicationContext(),
-                    "Please fill field above", Toast.LENGTH_LONG)
+                    "No Internet Access Available!", Toast.LENGTH_LONG)
                     .show();
         }
+
     }
 
     public boolean isEmailValid(String email) {
@@ -225,7 +212,7 @@ public class RegisterActivity extends BaseActivity implements OnDialogCompleteLi
             requestFocus(et_first);
             return false;
         } else {
-            inputLayoutFirstName.setErrorEnabled(false);
+//            inputLayoutFirstName.setErrorEnabled(false);
         }
         return true;
     }
@@ -237,7 +224,7 @@ public class RegisterActivity extends BaseActivity implements OnDialogCompleteLi
             requestFocus(et_last);
             return false;
         } else {
-            inputLayoutLastName.setErrorEnabled(false);
+//            inputLayoutLastName.setErrorEnabled(false);
         }
         return true;
     }
@@ -249,7 +236,7 @@ public class RegisterActivity extends BaseActivity implements OnDialogCompleteLi
             requestFocus(et_username);
             return false;
         } else {
-            inputLayoutUsername.setErrorEnabled(false);
+//            inputLayoutUsername.setErrorEnabled(false);
         }
         return true;
     }
@@ -263,7 +250,7 @@ public class RegisterActivity extends BaseActivity implements OnDialogCompleteLi
             requestFocus(et_email);
             return false;
         } else {
-            inputLayoutEmail.setErrorEnabled(false);
+//            inputLayoutEmail.setErrorEnabled(false);
         }
         return true;
     }
@@ -277,7 +264,7 @@ public class RegisterActivity extends BaseActivity implements OnDialogCompleteLi
             requestFocus(et_pass);
             return false;
         } else {
-            inputLayoutPassword.setErrorEnabled(false);
+//            inputLayoutPassword.setErrorEnabled(false);
         }
         return true;
     }
@@ -291,7 +278,7 @@ public class RegisterActivity extends BaseActivity implements OnDialogCompleteLi
             requestFocus(et_phone);
             return false;
         } else {
-            inputLayoutPhone.setErrorEnabled(false);
+//            inputLayoutPhone.setErrorEnabled(false);
         }
         return true;
     }
@@ -305,7 +292,7 @@ public class RegisterActivity extends BaseActivity implements OnDialogCompleteLi
             requestFocus(et_birth_yyyy);
             return false;
         } else {
-            inputLayoutYY.setErrorEnabled(false);
+//            inputLayoutYY.setErrorEnabled(false);
         }
         return true;
     }

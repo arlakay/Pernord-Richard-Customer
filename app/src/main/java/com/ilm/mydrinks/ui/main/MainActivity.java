@@ -209,6 +209,7 @@ public class MainActivity extends BaseActivity {
 
     public void confirmExit(){
         AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
+        alertDialogBuilder.setCancelable(false);
         alertDialogBuilder.setTitle("Exit");
         alertDialogBuilder.setMessage("Are you sure you want to exit?");
         alertDialogBuilder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {

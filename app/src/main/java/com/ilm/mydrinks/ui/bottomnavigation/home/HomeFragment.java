@@ -46,7 +46,7 @@ public class HomeFragment extends Fragment {
 		myQRFragment.setArguments(arguments);
 		getActivity().getSupportFragmentManager().beginTransaction()
 				.setCustomAnimations(R.anim.activityslidein, R.anim.activityslideinout, R.anim.activityslideoutpop, R.anim.activityslideout)
-				.add(R.id.root_frame, myQRFragment, "myQRFragment")
+				.replace(R.id.root_frame, myQRFragment, "myQRFragment")
 				.addToBackStack("myQRFragment")
 				.commit();
 	}
@@ -59,7 +59,7 @@ public class HomeFragment extends Fragment {
 		changePasswordFragment.setArguments(arguments);
 		getActivity().getSupportFragmentManager().beginTransaction()
 				.setCustomAnimations(R.anim.activityslidein, R.anim.activityslideinout, R.anim.activityslideoutpop, R.anim.activityslideout)
-				.add(R.id.root_frame, changePasswordFragment, "changePasswordFragment")
+				.replace(R.id.root_frame, changePasswordFragment, "changePasswordFragment")
 				.addToBackStack("changePasswordFragment")
 				.commit();
 	}
@@ -72,7 +72,7 @@ public class HomeFragment extends Fragment {
 		viewProfileFragment.setArguments(arguments);
 		getActivity().getSupportFragmentManager().beginTransaction()
 				.setCustomAnimations(R.anim.activityslidein, R.anim.activityslideinout, R.anim.activityslideoutpop, R.anim.activityslideout)
-				.add(R.id.root_frame, viewProfileFragment, "viewProfileFragment")
+				.replace(R.id.root_frame, viewProfileFragment, "viewProfileFragment")
 				.addToBackStack("viewProfileFragment")
 				.commit();
 	}
@@ -85,7 +85,7 @@ public class HomeFragment extends Fragment {
 		settingFragment.setArguments(arguments);
 		getActivity().getSupportFragmentManager().beginTransaction()
 				.setCustomAnimations(R.anim.activityslidein, R.anim.activityslideinout, R.anim.activityslideoutpop, R.anim.activityslideout)
-				.add(R.id.root_frame, settingFragment, "settingFragment")
+				.replace(R.id.root_frame, settingFragment, "settingFragment")
 				.addToBackStack("settingFragment")
 				.commit();
 	}
@@ -95,6 +95,7 @@ public class HomeFragment extends Fragment {
 		if (sessionManager.isLoggedIn()) {
 			sessionManager.setLogin(false);
 			sessionManager.logoutUser();
+
 		}
 	}
 

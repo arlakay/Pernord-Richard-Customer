@@ -20,13 +20,13 @@
         app:layout_behavior="@string/appbar_scrolling_view_behavior" >
 
         <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="120dp"
+            android:layout_width="192dp"
+            android:layout_height="192dp"
             android:layout_marginTop="20dp"
             android:layout_marginRight="60dp"
             android:layout_marginLeft="60dp"
             android:id="@+id/imageButton"
-            android:background="@drawable/logo_pernord_richard_inverse"
+            android:src="@drawable/luxe_storage_customer"
             android:layout_gravity="center_horizontal"
             android:scaleType="centerCrop" />
 

@@ -9,7 +9,8 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.LinearLayout;
+import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.gson.Gson;
@@ -21,6 +22,7 @@ import com.ilm.mydrinks.api.services.ApiService;
 import com.ilm.mydrinks.model.Claim;
 import com.ilm.mydrinks.utility.CustomScannerActivity;
 import com.ilm.mydrinks.utility.SessionManager;
+import com.ilm.mydrinks.utility.VerticalSeekBar;
 
 import java.util.HashMap;
 
@@ -36,16 +38,32 @@ import retrofit2.Response;
  */
 
 public class MyBottleDetailFragment extends Fragment {
-    @BindView(R.id.layout_bottle_glenlivet)LinearLayout glenlivet;
-    @BindView(R.id.layout_bottle_martell_xo)LinearLayout martell_xo;
-    @BindView(R.id.layout_bottle_martell_cordon_bleu)LinearLayout martell_cordon_bleu;
-    @BindView(R.id.layout_bottle_martell_vsop)LinearLayout martell_vsop_xo;
-    @BindView(R.id.layout_bottle_chivas)LinearLayout chivas;
-    @BindView(R.id.layout_bottle_absolut_vodka)LinearLayout absolut_vodka;
+//    @BindView(R.id.layout_bottle_glenlivet)LinearLayout glenlivet;
+//    @BindView(R.id.layout_bottle_martell_xo)LinearLayout martell_xo;
+//    @BindView(R.id.layout_bottle_martell_cordon_bleu)LinearLayout martell_cordon_bleu;
+//    @BindView(R.id.layout_bottle_martell_vsop)LinearLayout martell_vsop_xo;
+//    @BindView(R.id.layout_bottle_chivas)LinearLayout chivas;
+//    @BindView(R.id.layout_bottle_absolut_vodka)LinearLayout absolut_vodka;
+//    @BindView(R.id.layout_bottle_general)LinearLayout general;
+
+    @BindView(R.id.img_glenlivet)ImageView glenlivet;
+    @BindView(R.id.img_chivas)ImageView chivas;
+    @BindView(R.id.img_absolut_vodka)ImageView absolut_vodka;
+    @BindView(R.id.img_martell_xo)ImageView martell_xo;
+    @BindView(R.id.img_martell_vsop)ImageView martell_vsop_xo;
+    @BindView(R.id.img_martell_cordon_bleu)ImageView martell_cordon_bleu;
+    @BindView(R.id.img_general)ImageView general;
+
+    @BindView(R.id.bottle_slider)VerticalSeekBar slider;
+    @BindView(R.id.txt_slider)TextView txtSlider;
+    @BindView(R.id.txt_bottle_name)TextView txtBottleName;
+    @BindView(R.id.txt_storing_date)TextView txtStoring;
+    @BindView(R.id.txt_valid_until)TextView txtValid;
+    @BindView(R.id.txt_last_claim)TextView txtLastClaim;
 
     private static final String TAG = "MyBottleDetailFragment";
     private SessionManager sessionManager;
-    private String username;
+    private String username, bottle_name, volume, storing_date, valid_until, last_claim;
 
     @Nullable
     @Override
@@ -58,7 +76,19 @@ public class MyBottleDetailFragment extends Fragment {
         HashMap<String, String> user = sessionManager.getUserDetails();
         username = user.get(SessionManager.KEY_CUSTOMER_CODE);
 
-        String bottle_name    = getArguments().getString("productName");
+        bottle_name    = getArguments().getString("productName");
+        volume    = getArguments().getString("volume");
+        storing_date    = getArguments().getString("storing_date");
+        valid_until    = getArguments().getString("valid_until");
+        last_claim    = getArguments().getString("last_claim");
+
+        slider.setProgress(Integer.parseInt(volume));
+        slider.setEnabled(false);
+        txtSlider.setText(volume + "%");
+        txtBottleName.setText(bottle_name);
+        txtStoring.setText(storing_date);
+        txtValid.setText(valid_until);
+        txtLastClaim.setText(last_claim);
 
         if (bottle_name.contains("Glenlivet")){
 
@@ -68,6 +98,7 @@ public class MyBottleDetailFragment extends Fragment {
             martell_vsop_xo.setVisibility(View.GONE);
             chivas.setVisibility(View.GONE);
             absolut_vodka.setVisibility(View.GONE);
+            general.setVisibility(View.GONE);
 
         }if (bottle_name.contains("Martell XO")){
 
@@ -77,6 +108,7 @@ public class MyBottleDetailFragment extends Fragment {
             martell_vsop_xo.setVisibility(View.GONE);
             chivas.setVisibility(View.GONE);
             absolut_vodka.setVisibility(View.GONE);
+            general.setVisibility(View.GONE);
 
         }if (bottle_name.contains("Martell Cordon Bleu")){
 
@@ -86,6 +118,7 @@ public class MyBottleDetailFragment extends Fragment {
             martell_vsop_xo.setVisibility(View.GONE);
             chivas.setVisibility(View.GONE);
             absolut_vodka.setVisibility(View.GONE);
+            general.setVisibility(View.GONE);
 
         }if (bottle_name.contains("Martell VSOP XO")){
 
@@ -95,6 +128,7 @@ public class MyBottleDetailFragment extends Fragment {
             martell_vsop_xo.setVisibility(View.VISIBLE);
             chivas.setVisibility(View.GONE);
             absolut_vodka.setVisibility(View.GONE);
+            general.setVisibility(View.GONE);
 
         }if (bottle_name.contains("Chivas")){
 
@@ -104,8 +138,9 @@ public class MyBottleDetailFragment extends Fragment {
             martell_vsop_xo.setVisibility(View.GONE);
             chivas.setVisibility(View.VISIBLE);
             absolut_vodka.setVisibility(View.GONE);
+            general.setVisibility(View.GONE);
 
-        }if (bottle_name.contains("Absolut Vodka")){
+        }if (bottle_name.contains("Absolut") || bottle_name.contains("ABSOLUT")){
 
             glenlivet.setVisibility(View.GONE);
             martell_xo.setVisibility(View.GONE);
@@ -113,6 +148,20 @@ public class MyBottleDetailFragment extends Fragment {
             martell_vsop_xo.setVisibility(View.GONE);
             chivas.setVisibility(View.GONE);
             absolut_vodka.setVisibility(View.VISIBLE);
+            general.setVisibility(View.GONE);
+
+        } if (!bottle_name.contains("Absolut") && !bottle_name.contains("Chivas") &&
+                !bottle_name.contains("Martell VSOP XO") && !bottle_name.contains("Martell Cordon Bleu") &&
+                !bottle_name.contains("Martell XO") && !bottle_name.contains("Glenlivet") &&
+                !bottle_name.contains("ABSOLUT")) {
+
+            glenlivet.setVisibility(View.GONE);
+            martell_xo.setVisibility(View.GONE);
+            martell_cordon_bleu.setVisibility(View.GONE);
+            martell_vsop_xo.setVisibility(View.GONE);
+            chivas.setVisibility(View.GONE);
+            absolut_vodka.setVisibility(View.GONE);
+            general.setVisibility(View.VISIBLE);
 
         }
 
@@ -138,7 +187,6 @@ public class MyBottleDetailFragment extends Fragment {
                 claimBottle(username, result.getContents());
             }
         } else {
-            // This is important, otherwise the result will not be passed to the fragment
             super.onActivityResult(requestCode, resultCode, data);
         }
     }
@@ -165,7 +213,7 @@ public class MyBottleDetailFragment extends Fragment {
                     myBottleConfirmFragment.setArguments(arguments);
                     getActivity().getSupportFragmentManager().beginTransaction()
                             .setCustomAnimations(R.anim.activityslidein, R.anim.activityslideinout, R.anim.activityslideoutpop, R.anim.activityslideout)
-                            .add(R.id.root_frame, myBottleConfirmFragment, "myBottleConfirmFragment")
+                            .replace(R.id.root_frame, myBottleConfirmFragment, "myBottleConfirmFragment")
                             .addToBackStack("myBottleConfirmFragment")
                             .commit();
                 } else {

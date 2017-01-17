@@ -34,7 +34,7 @@ public class MyPointFragment extends Fragment {
         myPointDetailFragment.setArguments(arguments);
         getActivity().getSupportFragmentManager().beginTransaction()
                 .setCustomAnimations(R.anim.activityslidein, R.anim.activityslideinout, R.anim.activityslideoutpop, R.anim.activityslideout)
-                .add(R.id.root_frame, myPointDetailFragment, "myPointDetailFragment")
+                .replace(R.id.root_frame, myPointDetailFragment, "myPointDetailFragment")
                 .addToBackStack("myPointDetailFragment")
                 .commit();
     }
@@ -47,7 +47,7 @@ public class MyPointFragment extends Fragment {
         myPointDetailFragment.setArguments(arguments);
         getActivity().getSupportFragmentManager().beginTransaction()
                 .setCustomAnimations(R.anim.activityslidein, R.anim.activityslideinout, R.anim.activityslideoutpop, R.anim.activityslideout)
-                .add(R.id.root_frame, myPointDetailFragment, "myPointDetailFragment")
+                .replace(R.id.root_frame, myPointDetailFragment, "myPointDetailFragment")
                 .addToBackStack("myPointDetailFragment")
                 .commit();
     }
@@ -60,7 +60,7 @@ public class MyPointFragment extends Fragment {
         myPointDetailFragment.setArguments(arguments);
         getActivity().getSupportFragmentManager().beginTransaction()
                 .setCustomAnimations(R.anim.activityslidein, R.anim.activityslideinout, R.anim.activityslideoutpop, R.anim.activityslideout)
-                .add(R.id.root_frame, myPointDetailFragment, "myPointDetailFragment")
+                .replace(R.id.root_frame, myPointDetailFragment, "myPointDetailFragment")
                 .addToBackStack("myPointDetailFragment")
                 .commit();
     }

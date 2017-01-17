@@ -3,6 +3,7 @@ package com.ilm.mydrinks.api.services;
 import com.ilm.mydrinks.model.Claim;
 import com.ilm.mydrinks.model.ClubResponse;
 import com.ilm.mydrinks.model.MyBottleResponse;
+import com.ilm.mydrinks.model.NotificationResponse;
 import com.ilm.mydrinks.model.Profile;
 import com.ilm.mydrinks.model.Registration;
 
@@ -78,4 +79,8 @@ public interface ApiService {
     //Get Country
 
     //Get City by Country
+
+    //GetMessage
+    @GET("message/getAll")
+    Call<NotificationResponse> getMessage();
 }

@@ -13,7 +13,7 @@
         android:theme="@style/AppTheme">
         <activity
             android:name=".ui.welcome.WelcomeActivity"
-            android:theme="@style/welcome">
+            android:theme="@style/AppTheme.BrandedLaunch">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -30,7 +30,7 @@
             android:theme="@style/login" />
         <activity android:name=".ui.main.MainActivity" />
         <activity android:name=".ui.register.RegisterConfirmationActivity" />
-        <activity android:name=".activity.LoginConfirmationActivity" />
+        <activity android:name=".ui.login.LoginConfirmationActivity" />
         <activity
             android:name=".utility.CustomScannerActivity"
             android:screenOrientation="portrait"

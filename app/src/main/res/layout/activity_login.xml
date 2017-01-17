@@ -19,18 +19,15 @@
         app:layout_behavior="@string/appbar_scrolling_view_behavior" >
 
         <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="120dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginRight="60dp"
-            android:layout_marginLeft="60dp"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
             android:id="@+id/imageButton"
-            android:background="@drawable/logo_pernord_richard_inverse"
+            android:src="@drawable/luxe_storage_customer"
             android:layout_gravity="center_horizontal"
             android:scaleType="centerCrop" />
 
         <ScrollView android:id="@+id/login_form"
-            android:layout_marginTop="40dp"
+            android:layout_marginTop="32dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
@@ -41,45 +38,53 @@
                 android:paddingRight="20dp"
                 android:orientation="vertical">
 
-                <android.support.design.widget.TextInputLayout
+                <EditText
+                    android:id="@+id/uid"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Email Address / Username"
+                    android:padding="10dp"
+                    android:typeface="normal"
+                    android:inputType="textEmailAddress"
+                    android:maxLines="1"
+                    android:singleLine="true"
+                    android:fontFamily="sans-serif"
+                    android:background="@drawable/textfield_style"/>
+
+                <RelativeLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginBottom="16dp">
 
-                    <EditText
-                        android:id="@+id/uid"
-                        android:layout_width="fill_parent"
-                        android:layout_height="wrap_content"
-                        android:hint="Email Address / Username"
-                        android:layout_marginBottom="10dp"
-                        android:padding="10dp"
-                        android:typeface="normal"
-                        android:inputType="textEmailAddress"
-                        android:maxLines="1"
-                        android:singleLine="true"
-                        android:fontFamily="sans-serif"/>
-
-                </android.support.design.widget.TextInputLayout>
-
-                <android.support.design.widget.TextInputLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    <ImageButton
+                        android:id="@+id/btn_pass_help"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_alignParentRight="true"
+                        android:layout_alignParentEnd="true"
+                        android:layout_centerVertical="true"
+                        android:src="@drawable/ic_help"
+                        android:scaleType="fitCenter"
+                        android:background="@null"/>
 
                     <EditText
                         android:id="@+id/password"
                         android:typeface="normal"
-                        android:layout_width="fill_parent"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:layout_toLeftOf="@+id/btn_pass_help"
                         android:hint="@string/prompt_password"
                         android:imeActionId="@+id/login"
-                        android:layout_marginBottom="10dp"
                         android:padding="10dp"
                         android:imeOptions="actionUnspecified"
                         android:inputType="textPassword"
                         android:maxLines="1"
                         android:singleLine="true"
-                        android:fontFamily="sans-serif"/>
+                        android:fontFamily="sans-serif"
+                        android:background="@drawable/textfield_style"/>
 
-                </android.support.design.widget.TextInputLayout>
+                </RelativeLayout>
 
                 <Button
                     android:id="@+id/buttonlogin"
